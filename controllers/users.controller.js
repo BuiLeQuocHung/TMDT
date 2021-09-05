@@ -2,6 +2,8 @@ const Users = require('../models/users.model');
 const Payments = require('../models/payments.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
+const Key = "123456";
 class usersController {
     async register(req, res, next) {
         try {
@@ -95,7 +97,7 @@ class usersController {
             // Kiem tra token
             jwt.verify(
                 refreshtoken,
-                process.env.REFRESH_TOKEN_SERECT,
+                Key,
                 (err, user) => {
                     if (err)
                         return res.status(400).json({
@@ -168,11 +170,11 @@ class usersController {
 }
 
 function createAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SERECT, { expiresIn: '1d' });
+    return jwt.sign(user, Key, { expiresIn: '1d' });
 }
 
 function createRefreshToken(user) {
-    return jwt.sign(user, process.env.REFRESH_TOKEN_SERECT, {
+    return jwt.sign(user, Key, {
         expiresIn: '1d',
     });
 }

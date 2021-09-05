@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-const PaymentsSchema = new mongoose.Schema(
+const PaymentSchema = new mongoose.Schema(
     {
         user_id: {
             type: String,
+            trim: true,
+            unique: true,
             required: true,
         },
         name: {
@@ -36,4 +38,4 @@ const PaymentsSchema = new mongoose.Schema(
     },
 );
 
-module.exports = mongoose.model('Payments', PaymentsSchema);
+module.exports = mongoose.model('Payments', PaymentSchema);

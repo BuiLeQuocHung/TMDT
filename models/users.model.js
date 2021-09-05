@@ -3,6 +3,7 @@ const userScheme = new mongoose.Schema(
     {
         name: {
             type: String,
+            unique: true,
             required: true,
             trim: true,
         },
@@ -26,7 +27,7 @@ const userScheme = new mongoose.Schema(
         images: {
             type: Object,
             default: {
-                publicj_id: '',
+                publics_id: '',
                 url:
                     'https://res.cloudinary.com/dxnfxl89q/image/upload/v1609941293/javcommerce/person_slkixq.jpg',
             },
