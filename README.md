@@ -1,11 +1,11 @@
-# VAJGATE
+# BOARDGAME WORLD
 ## DEMO
-https://jconmmerce.herokuapp.com/
+
 
 ## NOTE
 If you want to use project, please download in main branche
 
-## Author: Bao Duy
+## Author: Nhóm 4
 
 Install dependencies for server
 
@@ -28,5 +28,3 @@ npm run client
 
 ## Server runs on http://localhost:5000 and client on http://localhost:3000
 User interface
-
-![UserInterface](https://user-images.githubusercontent.com/67371206/104798225-44ef3c80-57f7-11eb-8886-709342666286.PNG)
