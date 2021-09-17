@@ -1,0 +1,245 @@
+/*.container-fluid{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+}*/
+.titile__{
+    height: 120px;
+    font-size: 20px;
+    background-color: #fafafa;
+    color:#7b7b7b;
+}
+.tittle-content{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-top: 50px;
+}
+.card-product {
+    max-width: 1400px;
+    margin: 0% auto;
+   /* box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.3) !important;*/
+    padding: 20px;
+    background-color: #fff;
+}
+
+/*.card__title {
+    display: flex;
+    align-items: center;
+    padding: 30px 40px;
+}
+*/
+.card__title h3 {
+    text-align: right;
+    margin: 0;
+    color: #252525;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    width: 10%;
+}
+
+/*.card__title .icon {
+    width: 85%;
+    background: #115dd8;
+    padding: 10px 10px;
+    transition: 200ms;
+    cursor: pointer;
+}*/
+
+.card__title .icon:hover {
+    background: #252525;
+}
+
+.card__title .icon i {
+    color: #fff;
+}
+
+.card__body {
+    padding:40px;
+    display: flex;
+    flex-flow: row no-wrap;
+    margin-bottom: 25px;
+}
+
+.card__body-left {
+    width: 50%;
+}
+
+.card__body-right {
+    padding-left: 90px;
+    width: 50%;
+    position: relative;
+}
+/*---------------           */
+.feature{
+    margin-top: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+.feature i{
+    color:#be0505 ;
+}
+.bb{
+    border-top: dashed 1px #d1d1d1;
+    border-bottom: dashed 1px #d1d1d1;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    min-width: 145px;
+    padding-left: 15px;
+    width: 50%;
+}
+.bb i {
+    margin-right: 15px;
+    display: inline-block;
+    width: 16px;
+}
+.bb1{
+    font-family: SFUIDisplay;
+    font-size: 16px;
+    color: #848484;
+}
+.bb2{
+    font-family: SFUIDisplay;
+    font-size: 17px;
+    font-weight: 600;
+    color: #4a4a4a;
+}
+/*-------------*/
+.delivery span {
+    margin-left: 15px;
+}
+.delivery i {
+    color: #be0505;
+}
+.delivery li {
+    font-family: SFUIDisplay;
+    font-size: 16px;
+    color: #848484;
+}
+.card__body-left img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.modal-name {
+    font-family: 'Montserrat', sans-serif;
+}
+.desc{
+    margin-top: 20px;
+    font-size: 18px;
+}
+/*.modal-list li span {
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px 0;
+    display: block;
+}*/
+
+span.stock {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #a1cc16;
+}
+
+.reviews .stars {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+}
+
+.reviews .stars>li {
+    display: inline-block;
+}
+
+.reviews .stars>span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    margin-left: 5px;
+    color: #555;
+}
+
+.reviews .stars>li i {
+    color: #f7c01b;
+}
+
+.indicator {
+    position: relative;
+    width: 802px;
+    height: 3px;
+    background-color: #f1f1f1;
+    margin: 0 auto;
+}
+
+.indicator::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #115dd8;
+    width: 200px;
+    height: 100%;
+}
+
+.card__bottom {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__bottom a {
+    color: #115dd8;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+.single-line{
+    margin-top: 18px;
+    margin-bottom: 17px;
+    width: 589px;
+    height: 2px;
+    border-bottom: dashed 2px #d1d1d1;
+}
+.card_btn-addtocart {
+    cursor: pointer;
+    border: 1px solid #115dd8;
+    padding: 10px 30px;
+    color: #fff;
+    background: #115dd8;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    transition: 200ms;
+    width: 200px;
+    margin: 30px 0;
+    display: block;
+    text-align: center;
+}
+
+.card_btn-addtocart:hover {
+    background-color: transparent;
+    color: #115dd8;
+}
+
+.related-products {
+    margin-top: 100px;
+}
+
+.related-products h2 {
+    display: block;
+    margin: 32px 0;
+    font-size: 20px;
+    line-height: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #080808;
+}
+
+.detail_product-rented{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
