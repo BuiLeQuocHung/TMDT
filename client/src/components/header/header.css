@@ -261,3 +261,15 @@
         right: 0;
     }
 }
+
+.header-filter {
+    top: auto;
+    left: 50%;
+    position: absolute;
+    margin-left: -150px;
+}
+
+.filter-input {
+    width: 300px;
+    border-radius: 10px;
+}

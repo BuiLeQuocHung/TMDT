@@ -120,6 +120,16 @@ export default function Header() {
                 </li>
                 {isAdmin ? adminRoute() : ''}
             </ul>
+
+            <div className='header-filter'>
+                <input
+                    className="filter-input"
+                    onChange={''}
+                    value={''}
+                    placeholder="Search Name..."
+                ></input>
+            </div>
+
             <div className="header-right">
                 <div className={isLogged === false ? 'cart' : 'cart'}>
                     <Link to="/cart">

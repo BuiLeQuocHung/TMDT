@@ -92,14 +92,14 @@ function Filter() {
                 </ul>
             </div>
             <div className="filter-right">
-                <div>
+                {/* <div>
                     <input
                         className="filter-input"
                         onChange={handleQuery}
                         value={queryInput}
                         placeholder="Search Name..."
                     ></input>
-                </div>
+                </div> */}
                 <div className="filter-lable">
                     Filter
                     <i className="fas fa-sort-down"></i>
