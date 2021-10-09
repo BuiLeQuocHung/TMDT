@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import moment from 'moment';
 
 import axios from 'axios';
 
@@ -28,6 +28,15 @@ function MyAccount() {
             [name]: value,
         });
     };
+    const [date, setDate] = useState(
+        moment(new Date()).format("YYYY-MM-DD")
+    );
+
+     // handles when user changes input in date inputfield
+    const handleChangeDate = e => {
+        setDate(e.target.value);
+    };
+
     const onSubmit = async (e) => {
         e.preventDefault();
         setUser({ ...user, loading: true });
@@ -52,6 +61,7 @@ function MyAccount() {
             }
         }
     };
+
     return (
         <div className="wapper">
             <div className="titile__" > 
@@ -63,33 +73,21 @@ function MyAccount() {
                     <span>MyAccount</span>
                 </div>
             </div>
-            <div className ="infomation">
-                <div className="customer-detail">
-                    <h3>Account Information</h3>
-                    <form 
-                        noValidate
-                        autoComplete="off"
-                        
-                        className="form-infor"
-                    >
-                        <div className="name">
-                            <div className="form-title " style={{width:'50%',marginRight:'50px'}}>
-                                <label>First Name</label>
-                                <TextField
-                                    autoComplete=""
-                                    label="First Name"
-                                    variant="outlined"
-                                    value= {user.email}
-                                    onChange={onHandleChange}
-                                    name="email"
-                                    className="form-input"
-                                    required={true}
-                                    helperText=""
-                                    error=""
-                                />
-                            </div>
-                            <div className="form-title" style={{width:'50%'}}>
-                                <label>Last Name</label>
+            <div className="wapper-body">
+                <br/>
+                <br/>
+                <div className ="information">
+                    <div className="information-left">
+                        <h3>Chỉnh sửa thông tin</h3>
+                        <form 
+                            noValidate
+                            autoComplete="off"
+                            
+                            className="form-infor"
+                        >
+                            
+                            <div className="form-title">
+                                <label>Họ và tên</label>
                                 <TextField
                                     autoComplete=""
                                     label="Last Name"
@@ -103,72 +101,164 @@ function MyAccount() {
                                     error=""
                                 />
                             </div>
-                        </div>
-                        
-                        <div className="form-title">
-                            <label>Phone</label>
-                            <TextField
-                                autoComplete=""
-                                label="Phone"
-                                variant="outlined"
-                                value= {user.password}
-                                onChange={onHandleChange}
-                                name="email"
-                                className="form-input"
-                                required={true}
-                                helperText=""
-                                error=""
-                            />
-                        </div>
-                        <div className="form-title">
-                            <label>Email</label>
-                            <TextField
-                                autoComplete=""
-                                label="Email"
-                                variant="outlined"
-                                value= {user.password}
-                                onChange={onHandleChange}
-                                name="email"
-                                className="form-input"
-                                required={true}
-                                helperText=""
-                                error=""
-                            />
-                        </div>
-                        <div className="form-title">
-                            <label>Password</label>
-                            <TextField
-                                autoComplete=""
-                                label="Password"
-                                variant="outlined"
-                                required={true}
-                                value={user.password}
-                                onChange={onHandleChange}
-                                name="password"
-                                type="password"
-                                className="form-input"
-                                helperText=""
-                                error=""
-                            />
-                        </div>
-                        <div className="login-group" style={{marginLeft:'15%'}}>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                type="submit"
-                                onSubmit={onSubmit}
-                                disabled={user.loading}
-                            >
-                                {user.loading ? (
-                                    <CircularProgress size={25} />
-                                ) : (
-                                    'Update'
-                                )}
-                            </Button>
-                        </div>
-                    </form>
+                            <div className="form-title">
+                                <label>Số điện thoại</label>
+                                <TextField
+                                    autoComplete=""
+                                    label="Phone"
+                                    variant="outlined"
+                                    value= {user.password}
+                                    onChange={onHandleChange}
+                                    name="email"
+                                    className="form-input"
+                                    required={true}
+                                    helperText=""
+                                    error=""
+                                />
+                            </div>
+                            <div className="form-title">
+                                <label>Email</label>
+                                <TextField
+                                    autoComplete=""
+                                    label="Email"
+                                    variant="outlined"
+                                    value= {user.password}
+                                    onChange={onHandleChange}
+                                    name="email"
+                                    className="form-input"
+                                    required={true}
+                                    helperText=""
+                                    error=""
+                                />
+                            </div>
+                            <div className="form-title">
+                                <label>Địa chỉ</label>
+                                <TextField
+                                    autoComplete=""
+                                    label="Password"
+                                    variant="outlined"
+                                    required={true}
+                                    value={user.password}
+                                    onChange={onHandleChange}
+                                    name="password"
+                                    type="password"
+                                    className="form-input"
+                                    helperText=""
+                                    error=""
+                                />
+                            </div>
+                            <div className="form-title">
+                                <label>Ngày sinh</label>
+                                <TextField
+                                    name="date"
+                                    id="date"
+                                    label="Date"
+                                    variant="outlined"
+                                    type="date"
+                                    InputLabelProps={{ shrink: true }}
+                                    value={date}
+                                    onChange={handleChangeDate}
+                                    fullWidth
+                                    required
+                                    className="form-input"
+                                  />
+                            </div>
+                            <div className="login-group" style={{marginLeft:'15%'}}>
+                                <Button
+                                    variant="contained"
+                                    type="submit"
+                                    onSubmit={onSubmit}
+                                    disabled={user.loading}
+                                    className="update-infor-button"
+                                >
+                                    {user.loading ? (
+                                        <CircularProgress size={25} />
+                                    ) : (
+                                        'Cập nhập thông tin'
+                                    )}
+                                </Button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="information-right">
+                        <h3>Ảnh đại diện</h3>
+                        <img src="https://res.cloudinary.com/dxnfxl89q/image/upload/v1609941293/javcommerce/person_slkixq.jpg" alt="" className="information-left-image"/>
+                        <Button variant="contained"  type="submit" className="update-avatar">Cập nhập Avatar</Button>
+                        <form 
+                            noValidate
+                            autoComplete="off"
+                            
+                            className="form-infor"
+                        >
+                            
+                            <div className="form-title">
+                                <label>Mật khẩu cũ</label>
+                                <TextField
+                                    autoComplete=""
+                                    label="Mật khẩu cũ"
+                                    variant="outlined"
+                                    value= {user.password}
+                                    onChange={onHandleChange}
+                                    name="email"
+                                    className="form-input"
+                                    required={true}
+                                    helperText=""
+                                    error=""
+                                />
+                            </div>
+                            <div className="form-title">
+                                <label>Mật khẩu mới</label>
+                                <TextField
+                                    autoComplete=""
+                                    label="Mật khẩu mới"
+                                    variant="outlined"
+                                    value= {user.password}
+                                    onChange={onHandleChange}
+                                    name="email"
+                                    className="form-input"
+                                    required={true}
+                                    helperText=""
+                                    error=""
+                                />
+                            </div>
+                            <div className="form-title">
+                                <label>Xác nhận mật khẩu</label>
+                                <TextField
+                                    autoComplete=""
+                                    label="Mật khẩu mới"
+                                    variant="outlined"
+                                    value= {user.password}
+                                    onChange={onHandleChange}
+                                    name="email"
+                                    className="form-input"
+                                    required={true}
+                                    helperText=""
+                                    error=""
+                                />
+                            </div>
+                            <div className="login-group" style={{marginLeft:'15%'}}>
+                                <Button
+                                    variant="contained"
+                                    
+                                    type="submit"
+                                    onSubmit={onSubmit}
+                                    disabled={user.loading}
+                                    className="update-password-button"
+                                >
+                                    {user.loading ? (
+                                        <CircularProgress size={25} />
+                                    ) : (
+                                        'Cập nhập mật khẩu'
+                                    )}
+                                </Button>
+                            </div>
+                        </form>               
+                    </div>
                 </div>
+                <br/>
+                <br/>
             </div>
+            
         </div>
     );
 }
