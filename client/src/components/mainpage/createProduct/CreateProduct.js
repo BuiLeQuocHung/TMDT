@@ -4,13 +4,13 @@ import DatePicker from 'react-datepicker';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import loadingimage from './loading.gif';
-
+ 
 import 'react-datepicker/dist/react-datepicker.css';
 import Tooltip from '@material-ui/core/Tooltip';
-
+ 
 function CreateProduct() {
     const params = useParams();
-
+ 
     var initialState = {
         product_id: '',
         name: '',
@@ -27,25 +27,25 @@ function CreateProduct() {
         images: {},
     };
     const history = useHistory();
-
+ 
     const state = useContext(GlobleState);
     const [categories] = state.categoriesApi.categories;
     const [products] = state.productsApi.products;
     const [callback, setCallback] = state.productsApi.callback;
-
+ 
     const [isAdmin] = state.usersApi.isAdmin;
     const [token] = state.token;
-
+ 
     const [product, setProduct] = useState(initialState);
     const [images, setImages] = useState(false);
     const [loading, setLoading] = useState(false);
     const [startdate, setStartDate] = useState(new Date());
     const [onEdit, setOnEdit] = useState(false);
-
+ 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
+ 
     useEffect(() => {
         if (params.id) {
             products.forEach((product) => {
@@ -62,7 +62,7 @@ function CreateProduct() {
             setOnEdit(false);
         }
     }, [params.id, products]);
-
+ 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -109,22 +109,22 @@ function CreateProduct() {
         try {
             if (!isAdmin) return alert("You're not an admin.");
             const file = e.target.files[0];
-
+ 
             if (!file) return alert('Image not found.');
-
+ 
             if (file.size > 1024 * 1024) {
                 // 1mb
                 return alert('Size too large.');
             }
-
+ 
             if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
                 // 1mb
                 return alert('File format is incorrect.');
             }
-
+ 
             let formDate = new FormData();
             formDate.append('file', file);
-
+ 
             setLoading(true);
             const res = await axios.post('/api/upload', formDate, {
                 headers: {
@@ -155,13 +155,13 @@ function CreateProduct() {
             alert(err.response.data.msg);
         }
     };
-
+ 
     let styleImaheUpload = {
         display: images ? 'block' : 'none',
     };
-
+ 
     return (
-        <div className="create-product container">
+        <div className="create-product container" id = "create-product-container">
             <div className="cp-image-upload-box">
                 {loading ? (
                     <div className="cp-loading-image">
@@ -198,10 +198,10 @@ function CreateProduct() {
                     </>
                 )}
             </div>
-            
-            <div>
-                <form onSubmit={handleSubmit}>
-                    
+           
+            <div className ="div-form">
+                <form onSubmit={handleSubmit} className = "form-create-edit">
+                   
                     {/* <div className="mb-3">
                         <label htmlFor="product_id" className="form-label">
                             Product ID
@@ -217,9 +217,9 @@ function CreateProduct() {
                             required
                         />
                     </div> */}
-
-                    <div>
-                        <div className="mb-3">
+ 
+                    <div className="ten-cate">
+                        <div className="mb-3" id ="ten">
                             <label htmlFor="name" className="form-label">
                                 Tên
                             </label>
@@ -262,6 +262,7 @@ function CreateProduct() {
                             </select>
                         </div>
                     </div>
+                   
                     <div>
                         <div className="mb-3">
                             <label htmlFor="price" className="form-label">
@@ -279,8 +280,8 @@ function CreateProduct() {
                         </div>
                         <div>đồng</div>
                     </div>
-                    
-                    <div>
+                   
+                    <div className="motcaidivtodung">
                         <div className="mb-3 mr-3">
                             <label htmlFor="bust" className="form-label">
                                 Số người chơi tối thiểu
@@ -325,8 +326,8 @@ function CreateProduct() {
                         </div>
                         <div>phút</div>
                     </div>
-
-                    <div>
+ 
+                    <div className="motcaidivvuavua">
                         <div className="mb-3 mr-3">
                             <label htmlFor="hip" className="form-label">
                                 Độ tuổi từ
@@ -356,8 +357,8 @@ function CreateProduct() {
                             />
                         </div>
                     </div>
-                    
-                    
+                   
+                   
                     {/* <div className="birth">
                         <span className="d-block">Birthday</span>
                         <DatePicker
@@ -366,7 +367,7 @@ function CreateProduct() {
                             dateFormat="dd/MM/yyyy"
                         />
                     </div> */}
-                    
+                   
                     {/* <div className="mb-3 mt-3">
                         <label htmlFor="blood_type" className="form-label">
                             Blood Type
@@ -381,7 +382,7 @@ function CreateProduct() {
                             required
                         />
                     </div> */}
-
+ 
                     <div className="mb-3 mt-3">
                         <label htmlFor="hobby" className="form-label">
                             Mô tả
@@ -396,16 +397,19 @@ function CreateProduct() {
                             required
                         />
                     </div>
-                    
-                    
+                   
+                   
                     <button type="submit" className="cp-button">
                         {onEdit ? 'Cập nhật' : 'Tạo'}
                     </button>
                 </form>
             </div>
-            
+           
         </div>
     );
 }
-
+ 
 export default CreateProduct;
+ 
+
+

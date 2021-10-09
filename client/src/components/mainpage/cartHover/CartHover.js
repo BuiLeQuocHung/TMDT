@@ -63,7 +63,7 @@ function CartHover() {
                                         }
                                         className="cart-hover-remove"
                                     >
-                                        x
+                                        <i class="fa fa-trash"></i>
                                     </div>
                                 </div>
                                 <div className="cart-notify-quantity">
