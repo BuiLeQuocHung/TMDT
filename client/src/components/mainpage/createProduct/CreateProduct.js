@@ -198,188 +198,212 @@ function CreateProduct() {
                     </>
                 )}
             </div>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="product_id" className="form-label">
-                        Product ID
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        onChange={onHandleChange}
-                        disabled={onEdit ? true : false}
-                        value={product.product_id}
-                        id="product_id"
-                        name="product_id"
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="name" className="form-label">
-                        Name
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        onChange={onHandleChange}
-                        value={product.name}
-                        id="name"
-                        name="name"
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="japanName" className="form-label">
-                        Japan Name
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        onChange={onHandleChange}
-                        value={product.japanName}
-                        id="japanName"
-                        name="japanName"
-                        required
-                    />
-                </div>
-                <div style={{ display: 'flex' }}>
-                    <div className="mb-3 mr-3">
-                        <label htmlFor="bust" className="form-label">
-                            Bust
+            
+            <div>
+                <form onSubmit={handleSubmit}>
+                    
+                    {/* <div className="mb-3">
+                        <label htmlFor="product_id" className="form-label">
+                            Product ID
                         </label>
                         <input
-                            type="number"
+                            type="text"
                             className="form-control"
                             onChange={onHandleChange}
-                            value={product.bust}
-                            id="bust"
-                            name="bust"
+                            disabled={onEdit ? true : false}
+                            value={product.product_id}
+                            id="product_id"
+                            name="product_id"
+                            required
+                        />
+                    </div> */}
+
+                    <div>
+                        <div className="mb-3">
+                            <label htmlFor="name" className="form-label">
+                                Tên
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                onChange={onHandleChange}
+                                value={product.name}
+                                id="name"
+                                name="name"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label
+                                htmlFor="category"
+                                className="form-label"
+                                style={{ marginRight: '20px' }}
+                            >
+                                Phân loại
+                            </label>
+                            <select
+                                name="category"
+                                id="category"
+                                value={product.category}
+                                onChange={onHandleChange}
+                                required
+                            >
+                                <option value="">Please select a category</option>
+                                {categories.map((category) => {
+                                    return (
+                                        <option
+                                            value={category.category}
+                                            key={category._id}
+                                        >
+                                            {category.name}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="mb-3">
+                            <label htmlFor="price" className="form-label">
+                                Giá tiền
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                onChange={onHandleChange}
+                                value={product.price}
+                                id="price"
+                                name="price"
+                                required
+                            />
+                        </div>
+                        <div>đồng</div>
+                    </div>
+                    
+                    <div>
+                        <div className="mb-3 mr-3">
+                            <label htmlFor="bust" className="form-label">
+                                Số người chơi tối thiểu
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                onChange={onHandleChange}
+                                value={product.bust}
+                                id="bust"
+                                name="bust"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3 mr-3">
+                            <label htmlFor="waist" className="form-label">
+                                tối đa
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                onChange={onHandleChange}
+                                value={product.waist}
+                                id="waist"
+                                name="waist"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="japanName" className="form-label">
+                                Thời gian chơi
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                onChange={onHandleChange}
+                                value={product.japanName}
+                                id="japanName"
+                                name="japanName"
+                                required
+                            />
+                        </div>
+                        <div>phút</div>
+                    </div>
+
+                    <div>
+                        <div className="mb-3 mr-3">
+                            <label htmlFor="hip" className="form-label">
+                                Độ tuổi từ
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                onChange={onHandleChange}
+                                value={product.hip}
+                                id="hip"
+                                name="hip"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3 mr-3">
+                            <label htmlFor="height" className="form-label">
+                                Độ khó
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                onChange={onHandleChange}
+                                value={product.height}
+                                id="height"
+                                name="height"
+                                required
+                            />
+                        </div>
+                    </div>
+                    
+                    
+                    {/* <div className="birth">
+                        <span className="d-block">Birthday</span>
+                        <DatePicker
+                            selected={startdate}
+                            onChange={(date) => setStartDate(date)}
+                            dateFormat="dd/MM/yyyy"
+                        />
+                    </div> */}
+                    
+                    {/* <div className="mb-3 mt-3">
+                        <label htmlFor="blood_type" className="form-label">
+                            Blood Type
+                        </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            onChange={onHandleChange}
+                            value={product.blood_type}
+                            id="blood_type"
+                            name="blood_type"
+                            required
+                        />
+                    </div> */}
+
+                    <div className="mb-3 mt-3">
+                        <label htmlFor="hobby" className="form-label">
+                            Mô tả
+                        </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            onChange={onHandleChange}
+                            value={product.hobby}
+                            id="hobby"
+                            name="hobby"
                             required
                         />
                     </div>
-                    <div className="mb-3 mr-3">
-                        <label htmlFor="waist" className="form-label">
-                            Waist
-                        </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            onChange={onHandleChange}
-                            value={product.waist}
-                            id="waist"
-                            name="waist"
-                            required
-                        />
-                    </div>
-                    <div className="mb-3 mr-3">
-                        <label htmlFor="hip" className="form-label">
-                            Hip
-                        </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            onChange={onHandleChange}
-                            value={product.hip}
-                            id="hip"
-                            name="hip"
-                            required
-                        />
-                    </div>
-                    <div className="mb-3 mr-3">
-                        <label htmlFor="height" className="form-label">
-                            Height
-                        </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            onChange={onHandleChange}
-                            value={product.height}
-                            id="height"
-                            name="height"
-                            required
-                        />
-                    </div>
-                </div>
-                <span className="d-block">Birthday</span>
-                <DatePicker
-                    selected={startdate}
-                    onChange={(date) => setStartDate(date)}
-                    dateFormat="dd/MM/yyyy"
-                />
-                <div className="mb-3 mt-3">
-                    <label htmlFor="blood_type" className="form-label">
-                        Blood Type
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        onChange={onHandleChange}
-                        value={product.blood_type}
-                        id="blood_type"
-                        name="blood_type"
-                        required
-                    />
-                </div>
-                <div className="mb-3 mt-3">
-                    <label htmlFor="hobby" className="form-label">
-                        Hobby
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        onChange={onHandleChange}
-                        value={product.hobby}
-                        id="hobby"
-                        name="hobby"
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="price" className="form-label">
-                        Price
-                    </label>
-                    <input
-                        type="number"
-                        className="form-control"
-                        onChange={onHandleChange}
-                        value={product.price}
-                        id="price"
-                        name="price"
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <label
-                        htmlFor="category"
-                        className="form-label"
-                        style={{ marginRight: '20px' }}
-                    >
-                        Category:
-                    </label>
-                    <select
-                        name="category"
-                        id="category"
-                        value={product.category}
-                        onChange={onHandleChange}
-                        required
-                    >
-                        <option value="">Please select a category</option>
-                        {categories.map((category) => {
-                            return (
-                                <option
-                                    value={category.category}
-                                    key={category._id}
-                                >
-                                    {category.name}
-                                </option>
-                            );
-                        })}
-                    </select>
-                </div>
-                <button type="submit" className="cp-button">
-                    {onEdit ? 'Upadte' : 'Create'}
-                </button>
-            </form>
+                    
+                    
+                    <button type="submit" className="cp-button">
+                        {onEdit ? 'Cập nhật' : 'Tạo'}
+                    </button>
+                </form>
+            </div>
+            
         </div>
     );
 }
