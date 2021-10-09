@@ -28,16 +28,18 @@ function DetailsProduct() {
         window.scrollTo(0, 0);
     }, [detailProduct]);
     return (
-        <div className="container">
-            <div className="card-product">
-                <div className="card__title">
-                    <Link to="/" className="icon">
-                        <i className="fa fa-arrow-left"></i>
+        <div className="wapper">
+            <div className="titile__" > 
+                <div className="tittle-content">
+                    <Link to="/" style= {{color: '#7b7b7b'}}>
+                        Home 
                     </Link>
-                    <h3 style={{ marginLeft: '20px' }}>
-                        {detailProduct.category}
-                    </h3>
+                    <span>/</span>
+                    <span>{detailProduct.category}</span>
                 </div>
+            </div>
+            <div className="card-product">
+               
                 <div className="card__body">
                     <div className="card__body-left">
                         {detailProduct.images ? (
@@ -52,92 +54,105 @@ function DetailsProduct() {
                     <div className="card__body-right">
                         <h2 className="modal-name">{detailProduct.name}</h2>
                         <p className="modal-price">
-                            $ {detailProduct.price} / 1h
+                            {detailProduct.price} vnđ
                         </p>
-                        <ul className="modal-list">
-                            <li>
-                                <span>
-                                    Japan Name: {detailProduct.japanName}
-                                </span>
-                            </li>
-                            <li>
-                                <span>
-                                    Size: {detailProduct.bust},{' '}
-                                    {detailProduct.waist}, {detailProduct.hip}
-                                </span>
-                            </li>
-                            <li>
-                                <span>Height: {detailProduct.height} cm</span>
-                            </li>
-                            <li>
-                                <span>
-                                    Blood Type: {detailProduct.blood_type}
-                                </span>
-                            </li>
-                            <li>
-                                <span>
-                                    Birthday:{' '}
-                                    {dayjs(detailProduct.birthday).format(
-                                        'DD-MM-YYYY',
-                                    )}
-                                </span>
-                            </li>
-                            <li>
-                                <span>Hobby: {detailProduct.hobby}</span>
-                            </li>
-                            <span className="stock"> In stock</span>
-                            <div className="reviews">
-                                <ul className="stars">
-                                    <li>
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i className="far fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span>(64 reviews)</span>
+
+
+                        <div className="feature">  
+                            <div className="bb">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <div className="bb1">Players</div>
+                                    <div className="bb2">{detailProduct.blood_type}</div>
+                                </div>
                             </div>
-                        </ul>
-                        <div className="detail_product-rented">
-                            Rented: {detailProduct.rented} / h
+                            <div className="bb">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <div className="bb1">Playing Time</div>
+                                    <div className="bb2">{detailProduct.blood_type}</div>
+                                </div>
+                            </div>
+                            <div className="bb">
+                                <i class="fas fa-birthday-cake"></i>
+                                <div>
+                                    <div className="bb1">Age</div>
+                                    <div className="bb2">{detailProduct.blood_type}</div>
+                                </div>
+                            </div>
+                            <div className="bb">
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <div className="bb1">Level</div>
+                                    <div className="bb2">{detailProduct.blood_type}</div>
+                                </div>
+                            </div>
                         </div>
+                        <div className="desc">
+                            Bài Uno - Trò chơi bài phổ biến rầm rộ ở Việt Nam hiện nay. Người chơi đánh hết bài đầu tiên chiến thắng. Và đừng quên hô "Uno" khi bạn chỉ còn 1 lá bài đó!
+                        </div>
+                        <br></br>
+                        <span className="stock"> In stock</span>
+                        <div className="reviews">
+                            <ul className="stars">
+                                <li>
+                                    <i className="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i className="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i className="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i className="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i className="far fa-star"></i>
+                                </li>
+                            </ul>
+                            <span>(64 reviews)</span>
+                        </div>
+                        
+                        <div className="card__bottom">
+                            {isAdmin ? (
+                                <div className="product_admin-btn">
+                                    {/* <div className="product_admin-delete">Delete</div>🐊🚀 */}
+                                    <div className="product_admin-edit">
+                                        <Link
+                                            to={`/product/edit/${detailProduct._id}`}
+                                            style={{ color: 'white' }}
+                                        >
+                                            Edit
+                                        </Link>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div
+                                    className="card_btn-addtocart"
+                                    onClick={() => addCart(detailProduct)}
+                                >
+                                    Add To Cart
+                                </div>
+                            )}
+                        </div>
+                        <div className="single-line"></div>
+                        <div className="delivery">
+                            <i class="fas fa-truck-moving"></i>
+                            <span>Estimated delivery time</span>
+                            <div className="delivery-desc">
+                                <li>Hà Nội & HCM: 1 - 2 ngày. Miễn phí với đơn hàng trên 500.000đ</li>
+                                <li>Các tỉnh thành khác: 3 - 5 ngày</li>
+                                <li>Trường hợp cần giao hàng gấp, liên hệ trực tiếp Hotline: 12345</li>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <div className="indicator"></div>
-                <div className="card__bottom">
-                    <Link to="/">VAJGATE</Link>
-                    {isAdmin ? (
-                        <div className="product_admin-btn">
-                            {/* <div className="product_admin-delete">Delete</div>🐊🚀 */}
-                            <div className="product_admin-edit">
-                                <Link
-                                    to={`/product/edit/${detailProduct._id}`}
-                                    style={{ color: 'white' }}
-                                >
-                                    Edit
-                                </Link>
-                            </div>
-                        </div>
-                    ) : (
-                        <div
-                            className="card_btn-addtocart"
-                            onClick={() => addCart(detailProduct)}
-                        >
-                            Add To Cart
-                        </div>
-                    )}
-                </div>
+                
             </div>
-            <div className="related-products">
+            <div className="related-products container">
                 <h2>Related products</h2>
                 <div className="row">
                     {products.map((product, index) => {

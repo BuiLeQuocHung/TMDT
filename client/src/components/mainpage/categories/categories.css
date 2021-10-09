@@ -1,5 +1,7 @@
 .categories {
     margin-top: 00px;
+    background-color: #f8ecc0;
+    padding: 50px;
 }
 
 .categories-body {
@@ -15,10 +17,15 @@
 }
 
 .categories-input {
-    margin-right: 20px;
+    /*margin-right: 20px;
     border-bottom: 1px solid #555 !important;
     padding: 5px 0;
+    border: none;*/
+    margin-right: 20px;
+    border: 1px solid #555 !important;
+    padding: 5px 0;
     border: none;
+    width: 70%;
 }
 
 .categories-input:focus {
@@ -26,17 +33,18 @@
 }
 
 .categories-button {
-    background-color: #555;
-    color: #fff;
+    background-color: #cd8e06;
+    color: black;
     padding: 5px 15px;
     text-transform: uppercase;
     border: none;
     outline: none;
     font-size: 14px;
+    border-radius: 10px;
 }
 
 .categories-button:hover {
-    background-color: #666;
+    background-color: #bf8404;
 }
 
 .categories-button:focus {
@@ -50,6 +58,7 @@
     justify-content: space-between;
     border: 1px solid #555;
     margin-bottom: 20px;
+    background-color: white;    
 }
 
 .categories-item-name {
@@ -61,4 +70,19 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     display: -webkit-box;
+}
+
+
+
+
+
+/*fhsjjjjjjjjj,*/
+
+.create-category{
+    width: 500px;
+    height: 100px;
+    margin-bottom: 30px;
+    border: solid black 1px;
+    padding: 10px;
+    background-color: white;
 }

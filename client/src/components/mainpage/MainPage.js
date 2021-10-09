@@ -10,6 +10,8 @@ import History from './history/OrderHistory';
 import DetailHistory from './history/DetailHistory';
 import Categories from './categories/Categories';
 import CreateProduct from './createProduct/CreateProduct';
+import MyAccount from './myAccount/MyAccount';
+
 import { GlobleState } from '../../GlobleState';
 
 export default function MainPage() {
@@ -58,7 +60,12 @@ export default function MainPage() {
                     component={isAdmin ? CreateProduct : NotFoundPage}
                     exact
                 ></Route>
-
+                <Route
+                    path="/myAccount"
+                    component={isAdmin ? MyAccount : MyAccount}
+                    exact
+                ></Route>
+                
                 <Route path="*" component={NotFoundPage} exact></Route>
             </Switch>
         </div>

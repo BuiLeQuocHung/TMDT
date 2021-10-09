@@ -67,12 +67,12 @@ function Categories() {
             <div className="container">
                 <div className="categories-body">
                     <div className="categories-form">
-                        <form onSubmit={onHanldeSubmit}>
+                        <form onSubmit={onHanldeSubmit} className="create-category">
                             <label
                                 htmlFor="category"
                                 className="categories-label"
                             >
-                                Category
+                               Tên: 
                             </label>
                             <input
                                 type="text"
@@ -88,7 +88,31 @@ function Categories() {
                                 className="categories-button"
                                 style={{ width: '80px' }}
                             >
-                                {onEdit ? 'Update' : 'Save'}
+                                Tạo
+                            </button>
+                        </form>
+                        <form onSubmit={onHanldeSubmit} className="create-category">
+                            <label
+                                htmlFor="category"
+                                className="categories-label"
+                            >
+                                Tên:
+                            </label>
+                            <input
+                                type="text"
+                                name="category"
+                                id="category"
+                                className="categories-input"
+                                value={category}
+                                required
+                                onChange={(e) => setCategory(e.target.value)}
+                            ></input>
+                            <button
+                                type="submit"
+                                className="categories-button"
+                                style={{ width: '80px' }}
+                            >
+                                Lưu
                             </button>
                         </form>
                     </div>

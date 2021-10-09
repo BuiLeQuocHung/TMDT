@@ -54,6 +54,14 @@ export default function Header() {
                 >
                     Categories
                 </NavLink>
+                <NavLink
+                    to="/categories"
+                    activeClassName="nav-link--active"
+                    className="nav-link"
+                    exact
+                >
+                    Manage Users
+                </NavLink>
             </>
         );
     };
@@ -67,6 +75,14 @@ export default function Header() {
                     className="profile-image"
                 ></img>
                 <div className="profile-indicator"></div>
+                <NavLink
+                    to="/myAccount"
+                    activeClassName="nav-link--active"
+                    className="nav-link "
+                    exact
+                >
+                    My Account
+                </NavLink>
                 <NavLink
                     to="/history"
                     activeClassName="nav-link--active"

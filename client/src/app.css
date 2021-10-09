@@ -21,6 +21,7 @@
 @import './components/mainpage/createProduct/createProduct.css';
 @import './components/mainpage/filter/filter.css';
 @import './components/footer/foooter.css';
+@import './components/mainpage/myAccount/MyAccount.css';
 /* Reponsive */
 
 @media (max-width: 321px) {
