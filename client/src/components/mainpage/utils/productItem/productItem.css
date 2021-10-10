@@ -35,22 +35,22 @@
  }
   
  .product-name {
-    margin-top: 10px;
-    margin-bottom: 0;
-    text-transform: uppercase;
-    color: black;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
-    display: block;
-    font-weight: 600;
-    font-size: 16px;
-    letter-spacing: .15em;
-    font-weight: 400;
- }
+   margin-top: 22px;
+   margin-bottom: 0;
+   text-transform: uppercase;
+   color: black;
+   cursor: pointer;
+   transition: all .2s ease-in-out;
+   display: block;
+   font-weight: 600;
+   font-size: 19px;
+   letter-spacing: .15em;
+   font-weight: 400;
+}
   
  .product-name:hover {
     text-decoration: none;
-    color: #0113ff;
+    color: #E6B566;
  }
   
  .content {
@@ -95,6 +95,7 @@
  .prouduct_cart:hover .quick-look div {
     opacity: 1;
     top: 2px;
+    background-color: #E6B566;
  }
   
  .quick-look {
@@ -180,17 +181,20 @@
  }
   
  .modal-content {
-    opacity: 0;
+   opacity: 0;
     position: relative;
     width: 70% !important;
-    height: 70% !important;
+    height: auto;
     background-color: #f1f1f1;
     border: none;
-    box-shadow: .5px .5px 5px rgba(0, 0, 0, .1);
+    box-shadow: 0.5px 0.5px 5px rgb(0 0 0 / 10%);
     transition: all .3s ease-in-out;
     z-index: 100;
     overflow: hidden;
- }
+    transform: translateY(50px);
+}
+
+
   
  .modal-detail {
     display: flex;
@@ -297,6 +301,7 @@
  }
   
  .prouduct_cart-checkbox {
+   margin-left: calc(100% - 30px);
     position: absolute;
     z-index: 10;
     width: 30px;
@@ -307,20 +312,29 @@
     position: relative;
     top: -30px;
     display: flex;
-    margin-left: 40%;
+    justify-content: center;
+
  }
   
  .product_admin-btn div {
     font-size: 18px;
-    padding: 10px 20px;
-    background-color: var(--color-primary);
+    padding: 10px 25px;
+    background-color: #E6B566;
     color: #fff;
     cursor: pointer;
+    margin: 0px 20px;
+    border-radius: 10px;
  }
+
+ .product_admin-btn div:hover {
+   background-color: #f5d5a1;
+
+}
   
  .product_admin-delete {
     margin-right: 20px;
  }
+
   
  .prouduct_cart-new {
     position: absolute;

@@ -20,7 +20,7 @@
  .header .logo {
     text-align: center;
     font-size: 32px;
-    color: #0113ff !important;
+    color: #E5707E !important;
     text-transform: uppercase;
     margin-right: 20px;
     font-weight: 700;
@@ -42,20 +42,21 @@
  }
  
  .nav-link {
-    color: black !important;
-    transition: all .15s linear;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 500;
-    user-select: none;
- }
+   color: var(--color-primary);
+   transition: all .15s linear;
+   text-transform: uppercase;
+   font-size: 14px;
+   font-weight: 500;
+   -webkit-user-select: none;
+   user-select: none;
+}
  
  .nav-link--active {
-    color: orange !important;
+    color: #fce9cc;
  }
  
  .nav-link:hover {
-    color: orange !important;
+    color: #fce9cc;
  }
  
  .header .header-right .menu {
@@ -267,11 +268,14 @@
     left: 50%;
     position: absolute;
     margin-left: -150px;
+    
  }
  
  .filter-input {
     width: 300px;
     border-radius: 10px;
+    border: none;
+    outline: none;
  }
  
  

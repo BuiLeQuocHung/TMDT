@@ -92,6 +92,7 @@ export default function Products() {
                 <div className="container" style={styleProducts}>
                     {isAdmin && (
                         <div className="select-all">
+                            
                             <label htmlFor="selectAll">Select All</label>
                             <input
                                 type="checkbox"
@@ -99,12 +100,14 @@ export default function Products() {
                                 checked={isChecked}
                                 onChange={handleCheckAll}
                             ></input>
-                            <div
+                            
+                            
+                            <button
                                 className="delete-all-button"
                                 onClick={deleteAll}
                             >
                                 Delete All
-                            </div>
+                            </button>
                         </div>
                     )}
                     <Filter />

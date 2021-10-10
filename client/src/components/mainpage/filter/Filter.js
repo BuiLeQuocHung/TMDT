@@ -101,10 +101,10 @@ function Filter() {
                     ></input>
                 </div> */}
                 <div className="filter-lable">
-                    Filter
+                    SORT BY
                     <i className="fas fa-sort-down"></i>
                     <div className="filter-sort">
-                        <h3>SORT BY</h3>
+                        {/* <h4 style ={{fontSize: '25px'}}>Sort by</h4> */}
                         <ul>
                             <li
                                 className="filter-sort-item active"

@@ -120,11 +120,11 @@ export default function Header() {
                    className="logo"
                    style={isAdmin ? { fontSize: '20px' } : {}}
                >
-                   VAJGATE{isAdmin ? '-Admin' : ''}
+                   Board Game City{isAdmin ? '-Admin' : ''}
                </Link>
            </h2>
            <ul className="nav">
-               <li>
+               {/* <li>
                    <NavLink
                        to="/"
                        activeClassName="nav-link--active"
@@ -133,15 +133,15 @@ export default function Header() {
                    >
                        Home
                    </NavLink>
-               </li>
+               </li> */}
                {isAdmin ? adminRoute() : ''}
            </ul>
 
            <div className='header-filter'>
                <input
                    className="filter-input"
-                   onChange={''}
-                   value={''}
+                //    onChange={''}
+                //    value={''}
                    placeholder="Search Name..."
                ></input>
            </div>

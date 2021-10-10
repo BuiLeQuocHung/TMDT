@@ -7,26 +7,19 @@ function Footer() {
             <div className="container">
                 <div className="row">
                     <div className="col col-sm-12 col-md-6 col-lg-3 footer-about">
-                        <h3 className="footer-hd">ABOUT JAVGATE</h3>
+                        <h3 className="footer-hd">Board Game City</h3>
                         <ul>
-                            <li>We are awesome!</li>
+                            {/* <li>We are awesome!</li>
                             <li>Join us and live like a king.</li>
                             <li>+490 54 324 77</li>
-                            <li>POTSDAMER PLATZ 93564</li>
+                            <li>POTSDAMER PLATZ 93564</li> */}
                             <button>Contact Us</button>
                         </ul>
                     </div>
                     <div className="col col-sm-12 col-md-6 col-lg-3 footer-tags">
-                        <h3 className="footer-hd">TAGS</h3>
+                        <h3 className="footer-hd">Thanh Toán</h3>
                         <ul>
-                            <li>Art</li>
-                            <li>Decor</li>
-                            <li>Design</li>
-                            <li>Fashion</li>
-                            <li>Ideas</li>
-                            <li>Photo</li>
-                            <li>Popular</li>
-                            <li>Style</li>
+                            <li><img src={FooterBottomImage} alt="footerimg"></img></li>
                         </ul>
                     </div>
                     <div className="col col-sm-12 col-md-6 col-lg-3 footer-archive">
@@ -53,11 +46,11 @@ function Footer() {
                         </ul>
                     </div>
                     <div className="col col-sm-12 col-md-6 col-lg-3">
-                        <h3 className="footer-hd">CONTACT</h3>
+                        <h3 className="footer-hd">Liên Hệ</h3>
                         <ul className="footer-channel">
                             <li>
                                 <a
-                                    href="https://www.facebook.com/bao.duy.076/"
+                                    href="https://www.facebook.com/dnhuuhung"
                                     style={{
                                         marginBottom: '10px',
                                         display: 'block',
@@ -68,7 +61,7 @@ function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://github.com/duycarry123">
+                                <a href="https://github.com/BuiLeQuocHung/TMDT">
                                     <i className="fab fa-github"></i> Git
                                 </a>
                             </li>
@@ -87,7 +80,7 @@ function Footer() {
                             <p>Pricing</p>
                         </li>
                     </ul>
-                    <img src={FooterBottomImage} alt="footerimg"></img>
+                    {/* <img src={FooterBottomImage} alt="footerimg"></img> */}
                     <div>Copyright©duyav-Vajs</div>
                 </div>
             </div>

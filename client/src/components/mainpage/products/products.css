@@ -8,12 +8,19 @@
 }
 
 .select-all {
+    align-items: center;
+    display: flex;
     margin-left: auto;
     text-transform: uppercase;
 }
 
+
 .select-all label {
-    margin-right: 10px;
+    font-size: 22px;
+    color: orange;
+    margin: 0px;
+    margin-right: 13px;
+    font-weight: bold;
 }
 
 .select-all input {
@@ -22,11 +29,19 @@
 }
 
 .delete-all-button {
+    display: block;
+    border: none;
+    outline: none;
+    margin: 10px 0px;
+    padding: 10px 25px;
     cursor: pointer;
     font-weight: 500;
     font-size: 20px;
-    color: var(--color-primary);
-    text-decoration: underline;
+    color: white;
+    background-color: #E6B566;
+    border-radius: 10px;
+    margin-left: 15px;
+
 }
 
 .load-more {
