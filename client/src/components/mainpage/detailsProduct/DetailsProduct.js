@@ -96,7 +96,9 @@
                     </Link>
                     {isAdmin ? (
                         // <div className="product_admin-btn">
-                            <div className="card_btn-addtocart">
+                            <div className="card_btn-addtocart"
+                                style={{margin: "o auto"}}
+                            >
                             <i class="fa fa-edit" aria-hidden="true"></i>                        
                                 <Link
                                     to={`/product/edit/${detailProduct._id}`}

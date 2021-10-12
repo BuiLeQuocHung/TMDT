@@ -198,6 +198,7 @@ span.stock {
    font-weight: 700;
    font-size: 30px;
 }
+
 .single-line{
    margin-top: 18px;
    margin-bottom: 17px;
@@ -208,13 +209,13 @@ span.stock {
 .card_btn-addtocart {
    cursor: pointer;
    transition: 200ms;
-   /* margin-left: 42%; */
+   margin: 0 auto;
    padding: 10px 20px;
    border-radius: 0.8rem;
    background-color: #E6B566;
    width: 200px;
    text-align: center;
-   margin-top: 15px;
+   /* margin-top: 15px; */
 }
 .card_btn-addtocart:hover {
    background-color: #f5d5a1;

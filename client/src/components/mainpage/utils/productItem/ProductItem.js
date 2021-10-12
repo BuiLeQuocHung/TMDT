@@ -210,15 +210,19 @@ export default function ProductItem({
                                    </div>
                                </div>
                            ) : (
-                               <div
-                                   className="card_btn-addtocart"
-                                   onClick={() => addCart(product)}
-                                //    style = {{
-                                //        margin: "0 auto"
-                                //    }}
-                               >
-                                   Add To Cart
+                               <div className="product_user-btn"
+                               style={{marginTop: "20px"}}>
+                                    <div
+                                        className="card_btn-addtocart"
+                                        onClick={() => addCart(product)}
+                                        //    style = {{
+                                        //        margin: "0 auto"
+                                        //    }}
+                                    >
+                                        Add To Cart
+                                    </div>
                                </div>
+                               
                            )} 
                        </div>
                    </div>
