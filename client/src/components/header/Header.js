@@ -137,14 +137,14 @@ export default function Header() {
                {isAdmin ? adminRoute() : ''}
            </ul>
 
-           <div className='header-filter'>
+           {/* <div className='header-filter'>
                <input
                    className="filter-input"
                 //    onChange={''}
                 //    value={''}
                    placeholder="Search Name..."
                ></input>
-           </div>
+           </div> */}
 
            <div className="header-right">
                <div className={isLogged === false ? 'cart' : 'cart'}>

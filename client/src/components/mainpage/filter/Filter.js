@@ -77,7 +77,7 @@ function Filter() {
                     >
                         All
                     </li>
-                    {categories.map((category) => {
+                    {Object.values(categories).map((category) => {
                         return (
                             <li
                                 className="filter-category"
@@ -92,14 +92,14 @@ function Filter() {
                 </ul>
             </div>
             <div className="filter-right">
-                {/* <div>
+                <div>
                     <input
                         className="filter-input"
                         onChange={handleQuery}
                         value={queryInput}
                         placeholder="Search Name..."
                     ></input>
-                </div> */}
+                </div>
                 <div className="filter-lable">
                     SORT BY
                     <i className="fas fa-sort-down"></i>

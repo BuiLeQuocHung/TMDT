@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function ProductsApi() {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState({});
     const [callback, setCallback] = useState(false);
     const [loadingAPI, setLoadingAPI] = useState(false);
     const [category, setCategory] = useState('');

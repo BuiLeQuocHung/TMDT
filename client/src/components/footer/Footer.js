@@ -23,7 +23,7 @@ function Footer() {
                         </ul>
                     </div>
                     <div className="col col-sm-12 col-md-6 col-lg-3 footer-archive">
-                        <h3 className="footer-hd">ARCHIVE</h3>
+                        <h3 className="footer-hd">Delivery</h3>
                         <ul>
                             <li className="footer-hve">
                                 <p>Designer Shoes</p>

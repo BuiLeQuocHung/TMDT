@@ -1,9 +1,11 @@
 const Categorys = require('../models/categorys.model');
 const Products = require('../models/products.model');
+const utils = require('../utils.js')
+
 class CategorysController {
     async getCategorys(req, res, next) {
         try {
-            const categorys = await Categorys.find({});
+            const categorys = await utils.getAll('/BoardGameCategories');
             res.json(categorys);
             // res.json('test')
         } catch (err) {
