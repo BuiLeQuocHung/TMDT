@@ -69,44 +69,31 @@ class ProductsController {
    }
    async createProduct(req, res, next) {
        try {
-           const {
-               product_id,
-               name,
-               japanName,
-               bust,
-               waist,
-               hip,
-               height,
-               birthday,
-               blood_type,
-               hobby,
-               category,
-               price,
-               images,
-           } = req.body;
+           
            console.log(req.body);
-           const product = await Products.findOne({ product_id });
-           if (product) {
-               return res.status(400).json({ msg: 'Product is exist' });
-           }
-           if (!images)
-               return res.status(400).json({ msg: 'Image not found' });
-           const newProduct = new Products({
-               product_id,
-               name,
-               japanName,
-               bust,
-               waist,
-               hip,
-               height,
-               birthday,
-               blood_type,
-               hobby,
-               category,
-               price,
-               images,
-           });
-           newProduct.save();
+        //    const product = await Products.findOne({ product_id });
+        //    if (product) {
+        //        return res.status(400).json({ msg: 'Product is exist' });
+        //    }
+        //    if (!images)
+        //        return res.status(400).json({ msg: 'Image not found' });
+        //    const newProduct = new Products({
+        //        product_id,
+        //        name,
+        //        japanName,
+        //        bust,
+        //        waist,
+        //        hip,
+        //        height,
+        //        birthday,
+        //        blood_type,
+        //        hobby,
+        //        category,
+        //        price,
+        //        images,
+        //    });
+        //    newProduct.save();
+        await utils.add('/BoardGames',req.body)
            return res.json({ msg: 'Add product successfully.' });
        } catch (err) {
            return res.status(500).json({ msg: 'error At createProduct' });

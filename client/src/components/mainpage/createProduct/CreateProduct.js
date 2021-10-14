@@ -12,19 +12,16 @@ function CreateProduct() {
     const params = useParams();
  
     var initialState = {
-        product_id: '',
         name: '',
-        japanName: '',
-        bust: 0,
-        waist: 0,
-        hip: 0,
-        height: 0,
-        blood_type: '',
-        birthday: Date(),
-        hobby: '',
-        price: 0,
+        age: '',
         category: '',
-        images: {},
+        description: '',
+        difficultLevel: '',
+        numPlayerFrom: '',
+        numPlayerTo: '',
+        playingTime: '',
+        price: '',
+        image: ''
     };
     const history = useHistory();
  
@@ -37,7 +34,7 @@ function CreateProduct() {
     const [token] = state.token;
  
     const [product, setProduct] = useState(initialState);
-    const [images, setImages] = useState(false);
+    const [image, setImage] = useState(false);
     const [loading, setLoading] = useState(false);
     const [startdate, setStartDate] = useState(new Date());
     const [onEdit, setOnEdit] = useState(false);
@@ -51,14 +48,14 @@ function CreateProduct() {
             products.forEach((product) => {
                 if (product._id === params.id) {
                     setProduct(product);
-                    setImages(product.images);
+                    setImage(product.image);
                     setStartDate(new Date(product.birthday));
                     setOnEdit(true);
                 }
             });
         } else {
             setProduct(initialState);
-            setImages(false);
+            setImage(false);
             setOnEdit(false);
         }
     }, [params.id, products]);
@@ -68,10 +65,10 @@ function CreateProduct() {
         try {
             if (onEdit) {
                 if (!isAdmin) return alert("You're not an admin.");
-                if (!images) return alert('Image not found.');
+                // if (!image) return alert('Image not found.');
                 await axios.put(
                     `/api/products/${product._id}`,
-                    { ...product, birthday: startdate, images: images },
+                    product,
                     {
                         headers: { Authorization: token },
                     },
@@ -80,10 +77,10 @@ function CreateProduct() {
                 history.push('/');
             } else {
                 if (!isAdmin) return alert("You're not an admin.");
-                if (!images) return alert('Image not found.');
+                // if (!image) return alert('Image not found.');
                 await axios.post(
                     '/api/products',
-                    { ...product, birthday: startdate, images: images },
+                    product,
                     {
                         headers: { Authorization: token },
                     },
@@ -99,6 +96,7 @@ function CreateProduct() {
         let targets = e.target;
         let name = targets.name;
         let value = targets.value.toLowerCase();
+        console.log(name,value,product);
         setProduct({
             ...product,
             [name]: value,
@@ -133,7 +131,7 @@ function CreateProduct() {
                 },
             });
             setLoading(false);
-            setImages(res.data);
+            setImage(res.data);
         } catch (err) {
             alert(err.response.data.msg);
         }
@@ -144,20 +142,20 @@ function CreateProduct() {
             setLoading(true);
             await axios.post(
                 '/api/destroy',
-                { public_id: images.public_id },
+                { public_id: image.public_id },
                 {
                     headers: { Authorization: token },
                 },
             );
             setLoading(false);
-            setImages(false);
+            setImage(false);
         } catch (err) {
             alert(err.response.data.msg);
         }
     };
  
     let styleImaheUpload = {
-        display: images ? 'block' : 'none',
+        display: image ? 'block' : 'none',
     };
  
     return (
@@ -181,9 +179,9 @@ function CreateProduct() {
                             className="cp-image-upload"
                             style={styleImaheUpload}
                             alt="img-upload"
-                            src={images ? images.url : ''}
+                            src={image ? image.url : ''}
                         ></img>
-                        {images ? (
+                        {image ? (
                             <Tooltip title="Delete Image" placement="top">
                                 <span
                                     className="cp-image-button"
@@ -246,14 +244,14 @@ function CreateProduct() {
                                 id="category"
                                 value={product.category}
                                 onChange={onHandleChange}
-                                required
+                                // required
                             >
                                 <option value="">Please select a category</option>
-                                {categories.map((category) => {
+                                {categories && Object.values(categories).map((category) => {
                                     return (
                                         <option
-                                            value={category.category}
-                                            key={category._id}
+                                            value={category.id}
+                                            key={category.id}
                                         >
                                             {category.name}
                                         </option>
@@ -290,9 +288,9 @@ function CreateProduct() {
                                 type="number"
                                 className="form-control"
                                 onChange={onHandleChange}
-                                value={product.bust}
+                                value={product.numPlayerFrom}
                                 id="bust"
-                                name="bust"
+                                name="numPlayerFrom"
                                 required
                             />
                         </div>
@@ -304,9 +302,9 @@ function CreateProduct() {
                                 type="number"
                                 className="form-control"
                                 onChange={onHandleChange}
-                                value={product.waist}
+                                value={product.numPlayerTo}
                                 id="waist"
-                                name="waist"
+                                name="numPlayerTo"
                                 required
                             />
                         </div>
@@ -318,9 +316,9 @@ function CreateProduct() {
                                 type="text"
                                 className="form-control"
                                 onChange={onHandleChange}
-                                value={product.japanName}
+                                value={product.playingTime}
                                 id="japanName"
-                                name="japanName"
+                                name="playingTime"
                                 required
                             />
                         </div>
@@ -336,9 +334,9 @@ function CreateProduct() {
                                 type="number"
                                 className="form-control"
                                 onChange={onHandleChange}
-                                value={product.hip}
+                                value={product.age}
                                 id="hip"
-                                name="hip"
+                                name="age"
                                 required
                             />
                         </div>
@@ -350,9 +348,9 @@ function CreateProduct() {
                                 type="number"
                                 className="form-control"
                                 onChange={onHandleChange}
-                                value={product.height}
+                                value={product.difficultLevel}
                                 id="height"
-                                name="height"
+                                name="difficultLevel"
                                 required
                             />
                         </div>
@@ -391,9 +389,9 @@ function CreateProduct() {
                             type="text"
                             className="form-control"
                             onChange={onHandleChange}
-                            value={product.hobby}
+                            value={product.description}
                             id="hobby"
-                            name="hobby"
+                            name="description"
                             required
                         />
                     </div>
