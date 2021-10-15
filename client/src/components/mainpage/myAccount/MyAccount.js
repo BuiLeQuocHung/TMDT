@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { GlobleState } from '../../../GlobleState';
 import moment from 'moment';
 
 import axios from 'axios';
@@ -10,57 +11,41 @@ import Button from '@material-ui/core/Button/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 function MyAccount() {
-    const [user, setUser] = useState({
-        email: '',
-        password: '',
-        loading: false,
-    });
-    const [errors, setErrors] = useState({});
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    const onHandleChange = (e) => {
-        const { name, value } = e.target;
-        setUser({
-            ...user,
-            [name]: value,
-        });
-    };
-    const [date, setDate] = useState(
-        moment(new Date()).format("YYYY-MM-DD")
-    );
-
-     // handles when user changes input in date inputfield
-    const handleChangeDate = e => {
-        setDate(e.target.value);
-    };
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        setUser({ ...user, loading: true });
-
-        try {
-            await axios.post('/user/login', { ...user });
-
-            localStorage.setItem('firstLogin', true);
-            setUser({ ...user, loading: false });
-
-            window.location.href = '/';
-        } catch (err) {
-            setUser({ ...user, loading: false });
-            if (user.email === '') {
-                setErrors({ msg: 'Email not empty' });
-            } else {
-                if (user.password === '') {
-                    setErrors({ msg: 'Password not empty' });
-                } else {
-                    setErrors(err.response.data);
-                }
+    const state = useContext(GlobleState);
+    const [token] = state.token;
+    const [user] = state.usersApi.user;
+    const [callback, setCallback] = state.usersApi.callback;
+    const
+    const  updateInfo = async (user) => {
+        if (window.confirm('You want update information')) {
+            try {
+                
+                await axios.patch(`/user/edit`,
+                {}
+                {
+                    headers: { Authorization: token },
+                });
+                alert(`update successfully`);
+                setCallback(!callback);
+            } catch (err) {
+                alert(err.response.data.msg);
             }
         }
     };
+    const  updatepassword = async () => {
+        if (window.confirm('You want update password')) {
+            try {
+                await axios.patch(`/user/edit`, {
+                    headers: { Authorization: token },
+                });
+                alert(`update successfully`);
+                setCallback(!callback);
+            } catch (err) {
+                alert(err.response.data.msg);
+            }
+        }
+    };
+    
 
     return (
         <div className="wapper">
@@ -82,100 +67,69 @@ function MyAccount() {
                         <form 
                             noValidate
                             autoComplete="off"
-                            
+                            onSubmit= {updateInfo(name,)}
                             className="form-infor"
                         >
                             
                             <div className="form-title">
                                 <label>Họ và tên</label>
                                 <TextField
-                                    autoComplete=""
-                                    label="Last Name"
+                                    label="Họ và tên"
+                                    id="outlined-required"
                                     variant="outlined"
-                                    value= {user.password}
-                                    onChange={onHandleChange}
-                                    name="email"
+                                    name="name"
                                     className="form-input"
-                                    required={true}
-                                    helperText=""
-                                    error=""
+                                    required
+                                    Value={user.name}
                                 />
                             </div>
                             <div className="form-title">
                                 <label>Số điện thoại</label>
                                 <TextField
-                                    autoComplete=""
-                                    label="Phone"
+                                    label="Số điện thoại"
+                                    id="outlined-required"
                                     variant="outlined"
-                                    value= {user.password}
-                                    onChange={onHandleChange}
-                                    name="email"
+                                    name="phone"
                                     className="form-input"
-                                    required={true}
-                                    helperText=""
-                                    error=""
+                                    required
+                                    defaultValue={user.phone}
                                 />
                             </div>
                             <div className="form-title">
                                 <label>Email</label>
                                 <TextField
-                                    autoComplete=""
                                     label="Email"
+                                    id="outlined-required"
                                     variant="outlined"
-                                    value= {user.password}
-                                    onChange={onHandleChange}
                                     name="email"
                                     className="form-input"
-                                    required={true}
-                                    helperText=""
-                                    error=""
+                                    required
+                                    defaultValue={user.email}
                                 />
                             </div>
                             <div className="form-title">
                                 <label>Địa chỉ</label>
                                 <TextField
-                                    autoComplete=""
-                                    label="Password"
+                                    label="Địa chỉ"                                    
+                                    id="outlined-required"
                                     variant="outlined"
-                                    required={true}
-                                    value={user.password}
-                                    onChange={onHandleChange}
-                                    name="password"
-                                    type="password"
+                                    name="address"
                                     className="form-input"
-                                    helperText=""
-                                    error=""
+                                    required
+                                    defaultValue={user.address}
                                 />
                             </div>
-                            <div className="form-title">
-                                <label>Ngày sinh</label>
-                                <TextField
-                                    name="date"
-                                    id="date"
-                                    label="Date"
-                                    variant="outlined"
-                                    type="date"
-                                    InputLabelProps={{ shrink: true }}
-                                    value={date}
-                                    onChange={handleChangeDate}
-                                    fullWidth
-                                    required
-                                    className="form-input"
-                                  />
-                            </div>
+                            
                             <div className="login-group" style={{marginLeft:'15%'}}>
                                 <Button
                                     variant="contained"
                                     type="submit"
-                                    onSubmit={onSubmit}
-                                    disabled={user.loading}
+                                    
                                     className="update-infor-button"
                                 >
-                                    {user.loading ? (
-                                        <CircularProgress size={25} />
-                                    ) : (
-                                        'Cập nhập thông tin'
-                                    )}
+                                    
+                                        Cập nhập thông tin
+                                    
                                 </Button>
                             </div>
                         </form>
@@ -194,46 +148,36 @@ function MyAccount() {
                             <div className="form-title">
                                 <label>Mật khẩu cũ</label>
                                 <TextField
-                                    autoComplete=""
-                                    label="Mật khẩu cũ"
+                                    label="password cũ"                                    
+                                    id="outlined-required"
                                     variant="outlined"
-                                    value= {user.password}
-                                    onChange={onHandleChange}
-                                    name="email"
                                     className="form-input"
-                                    required={true}
-                                    helperText=""
-                                    error=""
+                                    required
+                                    type="password"
+                                    
                                 />
                             </div>
                             <div className="form-title">
                                 <label>Mật khẩu mới</label>
                                 <TextField
-                                    autoComplete=""
-                                    label="Mật khẩu mới"
+                                    label="password mới"                                    
+                                    id="outlined-required"
                                     variant="outlined"
-                                    value= {user.password}
-                                    onChange={onHandleChange}
-                                    name="email"
                                     className="form-input"
-                                    required={true}
-                                    helperText=""
-                                    error=""
+                                    required
+                                    type="password"
                                 />
                             </div>
                             <div className="form-title">
                                 <label>Xác nhận mật khẩu</label>
                                 <TextField
-                                    autoComplete=""
-                                    label="Mật khẩu mới"
+                                    label="password mới"                                    
+                                    id="outlined-required"
                                     variant="outlined"
-                                    value= {user.password}
-                                    onChange={onHandleChange}
-                                    name="email"
                                     className="form-input"
-                                    required={true}
-                                    helperText=""
-                                    error=""
+                                    required
+                                    type="password"
+
                                 />
                             </div>
                             <div className="login-group" style={{marginLeft:'15%'}}>
@@ -241,15 +185,11 @@ function MyAccount() {
                                     variant="contained"
                                     
                                     type="submit"
-                                    onSubmit={onSubmit}
-                                    disabled={user.loading}
+                                    onSubmit
+                                    disabled
                                     className="update-password-button"
                                 >
-                                    {user.loading ? (
-                                        <CircularProgress size={25} />
-                                    ) : (
-                                        'Cập nhập mật khẩu'
-                                    )}
+                                   Cập nhập mật khẩu
                                 </Button>
                             </div>
                         </form>               

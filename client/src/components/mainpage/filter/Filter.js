@@ -81,7 +81,7 @@ function Filter() {
                         return (
                             <li
                                 className="filter-category"
-                                key={category._id}
+                                key={category.id}
                                 value={category.name}
                                 onClick={handleCategory}
                             >

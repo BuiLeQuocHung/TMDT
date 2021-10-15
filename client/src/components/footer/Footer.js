@@ -81,7 +81,7 @@ function Footer() {
                         </li>
                     </ul>
                     {/* <img src={FooterBottomImage} alt="footerimg"></img> */}
-                    <div>Copyright©duyav-Vajs</div>
+                    <div>Copyright@123</div>
                 </div>
             </div>
         </div>
