@@ -41,8 +41,8 @@ export default function Login() {
           window.location.href = '/';
       } catch (err) {
           setUser({ ...user, loading: false });
-          // const {code} = err.response.data.message
-          // code && alert(code)
+          const {code} = err.response.data.message
+          code && alert(code)
           if (user.email === '') {
               setErrors({ msg: 'Email not empty' });
           } else {

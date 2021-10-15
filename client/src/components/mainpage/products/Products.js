@@ -83,7 +83,7 @@ export default function Products() {
                   {isAdmin && (
                       <div className="select-all">
                         
-                          <label htmlFor="selectAll">Select All</label>
+                          <label htmlFor="selectAll">Chọn tất cả</label>
                           <input
                               type="checkbox"
                               id="selectAll"
@@ -96,16 +96,16 @@ export default function Products() {
                               className="delete-all-button"
                               onClick={deleteAll}
                           >
-                              Delete All
+                              Xoá tất cả
                           </button>
                       </div>
                   )}
                   <Filter />
                   <div className="row">
                       {products.length === 0 ? (
-                          <div className="loading-products"> loading...</div>
+                          <div className="loading-products"> Không tìm thấy</div>
                       ) : loadingAPI ? (
-                          <div className="loading-products"> loading...</div>
+                          <div className="loading-products"> Đang tải ...</div>
                       ) : (
                           products && Object.values(products).map((product, index) => {
                               return (

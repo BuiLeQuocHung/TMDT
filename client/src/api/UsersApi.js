@@ -67,7 +67,7 @@ function UsersApi(token) {
           };
           getUser();
       }
-  }, [token, isAdmin, isLogged]);
+  }, [token, isAdmin, isLogged, callback]);
  
   // Payment
   useEffect(() => {

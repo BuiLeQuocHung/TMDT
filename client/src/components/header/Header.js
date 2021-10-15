@@ -48,7 +48,7 @@ export default function Header() {
                   className="nav-link"
                   exact
               >
-                  Create Product
+                  Tạo sản phẩm
               </NavLink>
               <NavLink
                   to="/categories"
@@ -56,16 +56,16 @@ export default function Header() {
                   className="nav-link"
                   exact
               >
-                  Categories
+                  Danh mục
               </NavLink>
-              <NavLink
+              {/* <NavLink
                   to="/categories"
                   activeClassName="nav-link--active"
                   className="nav-link"
                   exact
               >
                   Manage Users
-              </NavLink>
+              </NavLink> */}
           </>
       );
   };

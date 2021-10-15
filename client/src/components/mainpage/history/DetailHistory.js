@@ -82,7 +82,7 @@ function DetailHistory() {
                                                alt="history_image"
                                                className="detail-history-cart-img"
                                            ></img>
-                                       </td>``
+                                       </td>
                                        <td style={{ textTransform: 'uppercase',fontWeight:'500' }}>{product.name}</td>
                                        <td>{product.quantity}</td>
                                        <td>{product.price} $</td>
