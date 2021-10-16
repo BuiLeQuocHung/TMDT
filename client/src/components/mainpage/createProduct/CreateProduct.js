@@ -8,6 +8,7 @@ import { GlobleState } from '../../../GlobleState';
 import loadingimage from './loading.gif';
 import makeTimer from '../../../utils'
  
+
  
 function handleCategory(categories, product, isEdit) {
    return categories.map((category) => {
@@ -45,7 +46,7 @@ function CreateProduct() {
       numPlayerTo: '',
       playingTime: '',
       price: '',
-      image: ''
+      image: {},
   };
   const history = useHistory();
   const state = useContext(GlobleState);
@@ -60,7 +61,7 @@ function CreateProduct() {
   const [loadingTwo, setLoadingTwo] = useState(false);
   const [startdate, setStartDate] = useState(new Date());
   const [onEdit, setOnEdit] = useState(false);
-  console.log("=======product=====", product.category)
+//   console.log("=======product=====", product.category)
   useEffect(() => {
       window.scrollTo(0, 0);
   }, []);
@@ -85,11 +86,11 @@ function CreateProduct() {
       try {
           if (onEdit) {
               if (!isAdmin) return alert("You're not an admin.");
-              // if (!image) return alert('Image not found.');
+              if (!image) return alert('Image not found.');
               setLoadingTwo(true)
               await axios.put(
                   `/api/products/${product.id}`,
-                  product,
+                  {...product, image: image},
                   {
                       headers: { Authorization: token },
                   },
@@ -100,11 +101,11 @@ function CreateProduct() {
               history.push('/');
           } else {
               if (!isAdmin) return alert("You're not an admin.");
-              // if (!image) return alert('Image not found.');
+              if (!image) return alert('Image not found.');
               setLoadingTwo(true)
               await axios.post(
                   '/api/products',
-                  product,
+                  {...product,image: image},
                   {
                       headers: { Authorization: token },
                   },
@@ -143,9 +144,11 @@ function CreateProduct() {
               // 1mb
               return alert('File format is incorrect.');
           }
+         
           let formDate = new FormData();
           formDate.append('file', file);
           setLoading(true);
+          
           const res = await axios.post('/api/upload', formDate, {
               headers: {
                   'content-type': 'multipart/from-data',
@@ -154,6 +157,8 @@ function CreateProduct() {
           });
           setLoading(false);
           setImage(res.data);
+          console.log("image",image);
+          console.log("res.data",res.data);
       } catch (err) {
           alert(err.response.data.msg);
       }

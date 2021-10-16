@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { GlobleState } from '../../../GlobleState';
+import Tooltip from '@material-ui/core/Tooltip';
 import makeTimer from '../../../utils'
 import moment from 'moment';
- 
+import loadingimage from './loading.gif';
 import axios from 'axios';
  
 // MUI stuff
@@ -18,24 +19,28 @@ function MyAccount() {
    const [callback, setCallback] = state.usersApi.callback;
    const [loadingUpdate, setLoadingUpdate] = useState(false);
    const history = useHistory();
- 
+   const [image, setImage] = useState(user.image);
+   const [loading, setLoading] = useState(false);
+   console.log("======image====",image)
+   console.log("=====user====",user)
+   console.log("=====user.image====",user.image)
    const initialStateInfo = {
        name: '',
        phone: '',
        email: '',
        password: '',
        address: '',
-       image: ''
+       image: {},
    };
  
-   const initialStatePassowrd = {
+   const initialStatePassword = {
        password: '',
-       newPassowrd: '',
-       confirmPassowrd: '',
+       newPassword: '',
+       confirmPassword: '',
    };
  
    const [newUser, setNewUser] = useState(initialStateInfo);
-   const [newPassword, setNewPassword] = useState(initialStatePassowrd);
+   const [newPassword, setNewPassword] = useState(initialStatePassword);
  
  
    const onHandleChange = (e) => {
@@ -72,12 +77,14 @@ function MyAccount() {
            );
            await makeTimer()
            setLoadingUpdate(false)
-              setCallback(!callback);
-              history.push('/myAccount');
+           alert(`update successfully`);
+            setCallback(!callback);
+            history.push('/myAccount');
       } catch (err) {
           alert(err.response.data.msg);
       }
   };
+  const [errors, setErrors] = useState({});
    const handleSubmitPassword = async (e) => {
       e.preventDefault();
       try {
@@ -88,10 +95,13 @@ function MyAccount() {
                    headers: { Authorization: token },
                },
            );
-              setCallback(!callback);
-              history.push('/myAccount');
+           await makeTimer()
+           setLoadingUpdate(false)
+           alert(`update successfully`);
+            setCallback(!callback);
+            history.push('/myAccount');
       } catch (err) {
-          alert(err.response.data.msg);
+        alert(err.response.data.msg);
       }
   };
  
@@ -100,19 +110,51 @@ function MyAccount() {
        setNewUser(user)
    }, [])
  
-   const  updatepassword = async () => {
-       if (window.confirm('You want update password')) {
-           try {
-               await axios.patch(`/user/edit`, {
-                   headers: { Authorization: token },
-               });
-               alert(`update successfully`);
-               setCallback(!callback);
-           } catch (err) {
-               alert(err.response.data.msg);
-           }
-       }
-   };
+   let styleImaheUpload = {
+    display: image ? 'block' : 'none',
+};
+const onHandleUpload = async (e) => {
+    e.preventDefault();
+    try {
+        const file = e.target.files[0];
+        if (!file) return alert('Image not found.');
+        if (file.size > 1024 * 1024) {
+            // 1mb
+            return alert('Size too large.');
+        }
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
+            // 1mb
+            return alert('File format is incorrect.');
+        }
+       
+        let formDate = new FormData();
+        formDate.append('file', file);
+        setLoading(true);
+        
+        const res = await axios.post('/api/upload', formDate, {
+            headers: {
+                'content-type': 'multipart/from-data',
+                Authorization: token,
+            },
+        });
+        
+        setLoading(false);
+        setImage(res.data);
+        await axios.patch(
+            `/user/infor/${user.id}`,
+            {...newUser, image:res.data},
+            {
+                headers: { Authorization: token },
+            },
+        );
+        setCallback(!callback);
+        alert("Cập nhập thành công");
+        console.log("image",image);
+        console.log("res.data",res.data);
+    } catch (err) {
+        alert(err.response.data.msg);
+    }
+};
   
  
    return (
@@ -206,9 +248,42 @@ function MyAccount() {
                        </form>
                    </div>
                    <div className="information-right">
-                       <h3>Ảnh đại diện</h3>
-                       <img src="https://res.cloudinary.com/dxnfxl89q/image/upload/v1609941293/javcommerce/person_slkixq.jpg" alt="" className="information-left-image"/>
-                       <Button variant="contained"  type="submit" className="update-avatar">Cập nhập Avatar</Button>
+                       <div className="upload-avatar">
+                            <h3>Ảnh đại diện</h3>
+                            {
+                                
+                                user.image ? (
+                                    <>
+                                        <img
+                                       className="image-upload"
+                                       style={styleImaheUpload}
+                                       alt="img-upload"
+                                       src={image ? image.url: ''}
+                                       className="information-left-image"
+                                        >
+                                        </img>
+                                        <input
+                                        className="update-avatar" 
+                                        type="file" 
+                                        onChange={onHandleUpload}
+                                        ></input>
+                                    </>
+                                ): (
+                                <>
+                                    <img src="https://res.cloudinary.com/dxnfxl89q/image/upload/v1609941293/javcommerce/person_slkixq.jpg" alt="" className="information-left-image"/>
+                                    <input
+                                    className="update-avatar" 
+                                    type="file" 
+                                    
+                                    onChange={onHandleUpload}
+                                    ></input>
+                                    
+                                </>
+                            )}
+                            {/* <img src="https://res.cloudinary.com/dxnfxl89q/image/upload/v1609941293/javcommerce/person_slkixq.jpg" alt="" className="information-left-image"/> */}
+                            
+                       </div>                
+                     
                        <form
                            noValidate
                            autoComplete="off"
@@ -225,8 +300,8 @@ function MyAccount() {
                                    className="form-input"
                                    type="password"
                                    name="password"
+                                   required={true}
                                    onChange={onHandleChangePassword}
- 
                                />
                            </div>
                            <div className="form-title">
@@ -238,6 +313,7 @@ function MyAccount() {
                                    className="form-input"
                                    type="password"
                                    name="newPassword"
+                                   required={true}
                                    onChange={onHandleChangePassword}
                                />
                            </div>
@@ -250,6 +326,7 @@ function MyAccount() {
                                    className="form-input"
                                    type="password"
                                    name="confirmPassword"
+                                   required={true}
                                    onChange={onHandleChangePassword}
                                />
                            </div>

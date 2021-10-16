@@ -33,7 +33,7 @@ return (
                <div className="card__body-left">
                    {detailProduct.image ? (
                        <img
-                           src={detailProduct.image}
+                           src={detailProduct.image.url}
                            alt="product-detail"
                        ></img>
                    ) : (

@@ -5,14 +5,22 @@ const fs = require('fs');
 const auth = require('../middlewares/auth');
 const authAdmin = require('../middlewares/authAdmin');
 
+const app = require('../fire-base.js');
+const {getStorage, ref, uploadBytesResumable, getDownloadURL} = require('firebase/storage')
+const storage = getStorage();
+
+
+
 cloudinary.config({
-    cloud_name: process.env.UPLOAD_CLOUD_NAME,
-    api_key: process.env.UPLOAD_API_KEY,
-    api_secret: process.env.UPLOAD_API_SECRECT_KEY,
+    cloud_name: "dz4xjrg9g",
+    api_key: "155985213892545",
+    api_secret: "Go7avqPvcj0Ws-ymrNFP_LZ7iXM",
 });
 
 router.post('/upload', auth, authAdmin, (req, res) => {
+    // console.log("========upload file======",req);
     try {
+        
         if (!req.files || Object.keys(req.files).length === 0) {
             return res.status(400).json({ err: 'Không tìm thấy ảnh' });
         }
@@ -29,11 +37,10 @@ router.post('/upload', auth, authAdmin, (req, res) => {
             removeTmpfile(file.tempFilePath);
             return res.status(400).json({ err: 'Định dạng file không hợp lệ' });
         }
-
         // Tải ảnh lên cloudinary
         cloudinary.v2.uploader.upload(
             file.tempFilePath,
-            { folder: 'javcommerce' },
+            { folder: 'boardgames' },
             (err, result) => {
                 if (err) throw err;
                 removeTmpfile(file.tempFilePath);
@@ -43,6 +50,26 @@ router.post('/upload', auth, authAdmin, (req, res) => {
                 });
             },
         );
+        // console.log(file.name);
+        
+        // const uploadTask = storage.ref('games/${file.name}').put(file);
+        // console.log("======tiep tuc nao2=====");
+        // uploadTask.on(
+        //     "state_changed",
+        //     snapshot => {},
+        //     error => {
+        //         console.log("====error=====",error);
+        //     },
+        //     () => {
+        //         storage 
+        //             .ref("game")
+        //             .child(file.name)
+        //             .getDownloadURL()
+        //             .then(url => {
+        //                 console.log("=======url====",url);
+        //             });
+        //     }
+        // )
     } catch (err) {
         removeTmpfile(file.tempFilePath);
         return res

@@ -62,17 +62,19 @@
 .update-infor-button{
     background-color: #ed861f !important;
     margin-left:10% !important;
+   
 }
 .update-avatar{ 
-    margin-left: 38% !important;
+    margin-left: 43% !important;
     background-color: #d5d3d1 !important;
-
+    width: 109px;
 }
 .update-password-button{
     margin-left:15% !important;
     width: 300px;
     background-color: #d5d3d1 !important;
 }
+
  @media (max-width:1204px) {
     .form-infor{
         margin: 0 auto;

@@ -44,8 +44,8 @@ return (
                 )}
                 <Link to={`/detail/${product.id}`}>
                     <img
-                     //    src={product.image}
-                        src="https://cf.shopee.vn/file/56cf50a0c4d9180078ff62fa4f9a47b7"
+                        src={product.image.url}
+                        // src="https://cf.shopee.vn/file/56cf50a0c4d9180078ff62fa4f9a47b7"
                         alt="product-item"
                         className="product-img"
                     ></img>
@@ -116,7 +116,7 @@ return (
                         {product.image ? (
                             <img
                               //   src="https://cf.shopee.vn/file/56cf50a0c4d9180078ff62fa4f9a47b7"
-                                src={product.image}
+                                src={product.image.url}
                                 alt="product-detail"
                             ></img>
                         ) : (

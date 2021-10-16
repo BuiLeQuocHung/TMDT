@@ -18,7 +18,7 @@ export default function Header() {
   const [profile, setProfile] = useState(false);
   const [menu, setMenu] = useState(false);
  
-  const user = state.usersApi.user[0];
+  const [user] = state.usersApi.user;
   console.log("============user========", user)
   useEffect(() => {
       if (user) {
@@ -73,11 +73,23 @@ export default function Header() {
   const userRoute = () => {
       return (
           <>
-              <img
-                  src={user.image}
+            {
+                user.image ? (
+                    <img
+                  src={user.image.url}
                   alt="menu"
                   className="profile-image"
-              ></img>
+                ></img>
+                   
+                ):(
+                    <img
+                    src="https://res.cloudinary.com/dxnfxl89q/image/upload/v1609941293/javcommerce/person_slkixq.jpg"
+                    alt="menu"
+                    className="profile-image"
+                    ></img>
+                )
+            }
+              
               <div className="profile-indicator"></div>
               <NavLink
                   to="/myAccount"
