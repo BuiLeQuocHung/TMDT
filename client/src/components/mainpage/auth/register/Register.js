@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import loginImg from './login-1.png';
 import axios from 'axios';
+
+import makeTimer from '../../../../utils';
+
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
  
 // MUI stuff
 import TextField from '@material-ui/core/TextField/TextField';
@@ -40,14 +45,35 @@ export default function Register() {
  
           localStorage.setItem('firstLogin', true);
           setUser({ ...user, loading: false });
- 
+
+          toast.success('Đăng kí thành công', {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+
+            await makeTimer(1100)
+
           window.location.href = '/';
       } catch (err) {
  
           setUser({ ...user, loading: false });
           const msg = err.response.data.msg
+          console.log(msg)
           if (msg) {
-              alert(msg)
+            toast.error(msg.code, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
           }
           if (user.email === '') {
               setErrors({ msg: 'Email not empty' });
@@ -62,6 +88,22 @@ export default function Register() {
   };
   return (
       <div className="login register">
+          <div>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            style = {{
+                zIndex: '11'
+            }}
+            />
+          </div>
           <div className="login-img">
               <img src={loginImg} alt="login-img"></img>
           </div>

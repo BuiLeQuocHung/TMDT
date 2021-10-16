@@ -65,7 +65,7 @@ return (
                                 className="btn-addtocart"
                                 onClick={() => addCart(product)}
                             >
-                                Add To Cart
+                                Thêm vào giỏ hàng
                             </div>
                         </>
                     )}
@@ -215,7 +215,7 @@ return (
                                      //        margin: "0 auto"
                                      //    }}
                                  >
-                                     Add To Cart
+                                     Thêm vào giỏ hàng
                                  </div>
                             </div>
                          

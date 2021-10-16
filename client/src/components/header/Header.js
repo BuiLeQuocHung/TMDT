@@ -6,6 +6,11 @@ import Menu from './icons/menu.svg';
 import './header.css';
 import CartHover from '../mainpage/cartHover/CartHover';
 import { GlobleState } from '../../GlobleState';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import makeTimer from '../../utils';
  
 export default function Header() {
   const state = useContext(GlobleState);
@@ -37,6 +42,17 @@ export default function Header() {
   const logoutUser = async () => {
       await axios.get('user/logout');
       localStorage.clear();
+
+      toast.success('Đăng xuất thành công', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+      await makeTimer(2000)
       window.location.href = '/';
   };
   const adminRoute = () => {
@@ -129,6 +145,22 @@ export default function Header() {
  
   return (
       <header className="header" id="header">
+          <div >
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                style = {{
+                    zIndex: '11'
+                }}
+            />
+          </div>
           <h2>
               <Link
                   to="/"
@@ -276,7 +308,7 @@ export default function Header() {
                               className="nav-link"
                               activeClassName="nav-link--active"
                           >
-                              Login
+                              Đăng nhập
                           </NavLink>
                       </div>
                       <div>
@@ -285,7 +317,7 @@ export default function Header() {
                               className="nav-link"
                               activeClassName="nav-link--active"
                           >
-                              Register
+                              Đăng kí
                           </NavLink>
                       </div>
                   </div>

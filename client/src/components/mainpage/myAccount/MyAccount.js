@@ -5,6 +5,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import makeTimer from '../../../utils'
 import moment from 'moment';
 import loadingimage from './loading.gif';
+ 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from 'axios';
  
 // MUI stuff
@@ -81,7 +85,16 @@ function MyAccount() {
             setCallback(!callback);
             history.push('/myAccount');
       } catch (err) {
-          alert(err.response.data.msg);
+        //   alert(err.response.data.msg);
+          toast.error(err.response.data.msg, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
       }
   };
   const [errors, setErrors] = useState({});
@@ -97,11 +110,30 @@ function MyAccount() {
            );
            await makeTimer()
            setLoadingUpdate(false)
-           alert(`update successfully`);
+        //    alert(`update successfully`);
             setCallback(!callback);
+            toast.success(`update successfully`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            await makeTimer(2000)
             history.push('/myAccount');
       } catch (err) {
-        alert(err.response.data.msg);
+        //   alert(err.response.data.msg);
+        toast.error(err.response.data.msg, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
       }
   };
  
@@ -155,10 +187,57 @@ const onHandleUpload = async (e) => {
         alert(err.response.data.msg);
     }
 };
+//    const  updatepassword = async () => {
+//        if (window.confirm('You want update password')) {
+//            try {
+//                await axios.patch(`/user/edit`, {
+//                    headers: { Authorization: token },
+//                });
+//             //    alert(`update successfully`);
+//                toast.success(`update successfully`, {
+//                 position: "top-right",
+//                 autoClose: 2000,
+//                 hideProgressBar: false,
+//                 closeOnClick: true,
+//                 pauseOnHover: true,
+//                 draggable: true,
+//                 progress: undefined,
+//                 });
+//                setCallback(!callback);
+//            } catch (err) {
+//             //    alert(err.response.data.msg);
+//             toast.error(err.response.data.msg, {
+//                 position: "top-right",
+//                 autoClose: 2000,
+//                 hideProgressBar: false,
+//                 closeOnClick: true,
+//                 pauseOnHover: true,
+//                 draggable: true,
+//                 progress: undefined,
+//                 });
+//            }
+//        }
+//    };
   
  
    return (
        <div className="wapper">
+           <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                style = {{
+                    zIndex: '11'
+                }}
+            />
+          </div>
            <div className="titile__" >
                <div className="tittle-content">
                    <Link to="/" style= {{color: '#7b7b7b'}}>

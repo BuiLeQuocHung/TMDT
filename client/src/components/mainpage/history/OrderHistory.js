@@ -15,7 +15,7 @@ function OrderHistory() {
            <div className="container">
                {history.length === 0 ? (
                    <h2 style={{ marginBottom: '300px' }}>
-                       History Clear
+                       Empty
                        <Link to="/" className="cart-to-home">
                            <i
                                className="fas fa-long-arrow-alt-left"
@@ -64,7 +64,7 @@ function OrderHistory() {
                                                <Link
                                                    to={`history/${payment.id}`}
                                                >
-                                                   View
+                                                   Xem chi tiết
                                                </Link>
                                            </td>
                                        </tr>

@@ -19,15 +19,15 @@ app.use(
  
 // connect mongoDB
 const URI = process.env.MONGODB_URL
-mongoose.connect("mongodb+srv://tmdt:huuhung14042000@cluster0.oooxg.mongodb.net/tmdt?retryWrites=true&w=majority", {
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}, err => {
-  if (err) throw err;
-  console.log('Connected to MongoDB')
-})
+// mongoose.connect("mongodb+srv://tmdt:huuhung14042000@cluster0.oooxg.mongodb.net/tmdt?retryWrites=true&w=majority", {
+//   useCreateIndex: true,
+//   useFindAndModify: false,
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// }, err => {
+//   if (err) throw err;
+//   console.log('Connected to MongoDB')
+// })
  
 // Build
 if (process.env.NODE_ENV === 'production') {

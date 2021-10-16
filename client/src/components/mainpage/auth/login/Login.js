@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import loginImg1 from './login-1.png';
+import makeTimer from '../../../../utils';
  
 import axios from 'axios';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
  
 // MUI stuff
 import TextField from '@material-ui/core/TextField/TextField';
@@ -38,11 +42,32 @@ export default function Login() {
           localStorage.setItem('firstLogin', true);
           setUser({ ...user, loading: false });
  
+           
+           toast.success('Đăng nhập thành công', {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+            await makeTimer(1100)
           window.location.href = '/';
+          
       } catch (err) {
           setUser({ ...user, loading: false });
           const {code} = err.response.data.message
-          code && alert(code)
+          code && toast.error(code, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+          console.log(code)
           if (user.email === '') {
               setErrors({ msg: 'Email not empty' });
           } else {
@@ -56,6 +81,22 @@ export default function Login() {
   };
   return (
       <div className="login register">
+          <div>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            style={{
+                zIndex: '11'
+            }}
+            />
+          </div>
           <div className="login-img">
               {/* <p className="login-desc">Có quá nhiều hình thức MMO khác nhau để lựa chọn. Hãy chọn một hình thức duy nhất, học từ người tin tưởng và bắt tay vào làm cho đến khi có kết quả, không nên đứng núi này trông núi nọ.</p> */}
               <img src={loginImg1} alt="login-img"></img>

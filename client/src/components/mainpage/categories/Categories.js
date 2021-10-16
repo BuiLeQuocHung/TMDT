@@ -3,6 +3,10 @@ import { GlobleState } from '../../../GlobleState';
 import axios from 'axios';
 import makeTimer from '../../../utils'
 import { CircularProgress } from '@material-ui/core';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Categories() {
    const state = useContext(GlobleState);
    const [categories] = state.categoriesApi.categories;
@@ -35,12 +39,32 @@ function Categories() {
                },
            );
            await makeTimer()
-           alert(`Add ${categorycreate} successfully`);
+        //    alert(`Add ${categorycreate} successfully`);
+            
+           toast.success(`Thêm danh mục ${categorycreate} thành công`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+
            setLoadingCreate(false)
            setCategorycreate('');
            setCallback(!callback);
        } catch (err) {
-           alert(err.response.data.msg);
+        //    alert(err.response.data.msg);
+           toast.error(err.response.data.msg, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
        }
    };
    const updateCategory = async (e) => {
@@ -58,12 +82,30 @@ function Categories() {
                },
            );
            await makeTimer()
-           alert(`update ${categoryupdate} successfully`);
+        //    alert(`update ${categoryupdate} successfully`);
+           toast.success(`update ${categoryupdate} successfully`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
            setLoadingEdit(false)
            setCategoryupdate('');
            setCallback(!callback);
        } catch (err) {
-           alert(err.response.data.msg);
+        //    alert(err.response.data.msg);
+           toast.error(err.response.data.msg, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
        }
    };
   
@@ -82,8 +124,27 @@ function Categories() {
                });
                console.log("detele:",callback);
                setCallback(!callback);
+               toast.success(`delete ${name} successfully`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+
            } catch (err) {
-               alert(err.response.data.msg);
+            //    alert(err.response.data.msg);
+            toast.error(err.response.data.msg, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
            }
        }
    };
@@ -91,6 +152,22 @@ function Categories() {
  
    return (
        <div className="categories">
+           <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                style = {{
+                    zIndex: '11'
+                }}
+            />
+          </div>
            <div className="container">
                <div className="categories-body">
                    <div className="categories-form">

@@ -112,7 +112,7 @@ function DetailHistory() {
                        className="fas fa-long-arrow-alt-left"
                        style={{ marginRight: '5px' }}
                    ></i>
-                   Go Back To History
+                   Quay lại lịch sử
                </Link>
            </div>
        </div>

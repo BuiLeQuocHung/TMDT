@@ -31,7 +31,7 @@ return (
            {detailProduct.length !== 0 && (
            <div className="card__body">
                <div className="card__body-left">
-                   {detailProduct.image ? (
+                   {detailProduct.image  ? (
                        <img
                            src={detailProduct.image.url}
                            alt="product-detail"
@@ -120,21 +120,22 @@ return (
                )}            
            </div>
        <div className="related-products container">
-           <h2>Related products</h2>
+           <h2>Các sản phẩm liên quan</h2>
            <div className="row">
-               {products && Object.values(products).map((product, index) => {
-                   if (product.category === detailProduct.category) {
-                       if (index <= 7) {
-                           return (
-                               <ProductItem
-                                   product={product}
-                                   key={index}
-                               />
-                           );
-                       }
-                   }
-                   return null;
-               })}
+           {products.length > 0 && Object.keys(detailProduct).length !== 0 && Object.values(products).map((product, index) => {
+                  if (product.category.toLowerCase() == detailProduct.category.toLowerCase()) {
+                      if (index <= 7) {
+                          return (
+                              <ProductItem
+                                  product={product}
+                                  key={index}
+                              />
+                          );
+                      }
+                  }
+                  return null;
+              })}
+
            </div>
        </div>
    </div>

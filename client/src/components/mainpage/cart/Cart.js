@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { GlobleState } from '../../../GlobleState';
 import PaypalButton from './PaypalButton';
 import axios from 'axios';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
  
  
 export default function Cart() {
@@ -89,12 +92,38 @@ export default function Cart() {
  
       setCart([]);
       addToCart([]);
-      alert('You have successfully placed an order');
+    //   alert('You have successfully placed an order')
+
+      toast.success('Bạn đã đặt hàng thành công', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
       setCallback(!callback); // de goi lai api
   };
  
   return (
       <div className="cart" style={{marginLeft: '50px', marginBottom: '10rem'}}>
+          <div>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            style = {{
+                zIndex: '11'
+            }}
+            />
+          </div>
           {cart.length === 0 ? (
               <div className="cart-empty">
                   <h2>Cart Empty</h2>

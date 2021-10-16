@@ -4,6 +4,10 @@ import ProductItem from '../utils/productItem/ProductItem';
 import Filter from '../filter/Filter';
 import LoadMore from '../loadMore/LoadMore';
 import axios from 'axios';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Products() {
   const state = useContext(GlobleState);
   const [products, setProducts] = state.productsApi.products;
@@ -14,6 +18,10 @@ export default function Products() {
   const [callback, setCallback] = state.productsApi.callback;
   const [loading, setLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+
+
+  
+
   useEffect(() => {
       setCategory('');
       window.scrollTo(0, 0);
@@ -34,6 +42,15 @@ export default function Products() {
           });
           setLoading(false);
           setCallback(!callback);
+          toast.success(`Xóa sản phẩm thành công`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
       } catch (err) {
           console.log(err.response.data);
       }
@@ -80,6 +97,22 @@ export default function Products() {
       return (
           <React.Fragment>
               <div className="container" style={styleProducts}>
+                <div>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    style = {{
+                        zIndex: '11'
+                    }}
+                />
+                </div>
                   {isAdmin && (
                       <div className="select-all">
                         

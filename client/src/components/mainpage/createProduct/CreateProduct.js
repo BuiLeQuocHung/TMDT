@@ -7,6 +7,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import { GlobleState } from '../../../GlobleState';
 import loadingimage from './loading.gif';
 import makeTimer from '../../../utils'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
  
 
  
@@ -95,7 +98,16 @@ function CreateProduct() {
                       headers: { Authorization: token },
                   },
               );
-              await makeTimer()
+              toast.success(`Chỉnh sửa sản phẩm ${product.name} thành công`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+              await makeTimer(2000)
               setLoadingTwo(false)
               setCallback(!callback);
               history.push('/');
@@ -110,13 +122,31 @@ function CreateProduct() {
                       headers: { Authorization: token },
                   },
               );
-              await makeTimer()
+              toast.success(`Thêm sản phẩm ${product.name} thành công`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+              await makeTimer(2000)
               setLoadingTwo(false)
               setCallback(!callback);
               history.push('/');
           }
       } catch (err) {
-          alert(err.response.data.msg);
+        //   alert(err.response.data.msg);
+          toast.error(err.response.data.msg, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
       }
   };
   const onHandleChange = (e) => {
@@ -135,14 +165,45 @@ function CreateProduct() {
       try {
           if (!isAdmin) return alert("You're not an admin.");
           const file = e.target.files[0];
-          if (!file) return alert('Image not found.');
+          if (!file) {
+            //   return alert('Image not found.');
+              return toast.warn('Không tìm thấy ảnh.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+
+            }
           if (file.size > 1024 * 1024) {
               // 1mb
-              return alert('Size too large.');
+            //   return alert('Size too large.');
+              return toast.warn('Kích thước quá lớn.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+              
           }
           if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
               // 1mb
-              return alert('File format is incorrect.');
+            //   return alert('File format is incorrect.');
+              return toast.warn('Tập tin không đúng định dạng.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
           }
          
           let formDate = new FormData();
@@ -157,10 +218,26 @@ function CreateProduct() {
           });
           setLoading(false);
           setImage(res.data);
-          console.log("image",image);
-          console.log("res.data",res.data);
+          toast.success(`Thêm ảnh thành công`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
       } catch (err) {
-          alert(err.response.data.msg);
+        //   alert(err.response.data.msg);
+        toast.error(err.response.data.msg, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
       }
   };
   const handleDestroyImage = async () => {
@@ -176,8 +253,26 @@ function CreateProduct() {
           );
           setLoading(false);
           setImage(false);
+          toast.success(`Xóa ảnh thành công`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
       } catch (err) {
-          alert(err.response.data.msg);
+        //   alert(err.response.data.msg);
+          toast.error(err.response.data.msg, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
       }
   };
   let styleImaheUpload = {
@@ -185,6 +280,26 @@ function CreateProduct() {
   };
   return (
       <div className="create-product container" id = "create-product-container">
+          <div
+            style={{
+                display: 'none'
+            }}
+          >
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                style = {{
+                    zIndex: '11'
+                }}
+            />
+          </div>
           <div className="cp-image-upload-box">
               {loading ? (
                   <div className="cp-loading-image">
@@ -288,7 +403,7 @@ function CreateProduct() {
                               required
                           />
                       </div>
-                      <div>đồng</div>
+                      <div>USD</div>
                   </div>
                
                   <div className="motcaidivtodung">
