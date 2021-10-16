@@ -47,7 +47,7 @@ return (
                    <div className="modal-wrapper" >
                        <h5 className="modal-name">{detailProduct.name}</h5>
                        <p className="modal-price">
-                           $ {detailProduct.name}
+                           $ {detailProduct.price}
                        </p>
                    </div>
                    <div className="modal-list">
