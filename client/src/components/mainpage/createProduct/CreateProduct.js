@@ -88,12 +88,12 @@ function CreateProduct() {
       e.preventDefault();
       try {
           if (onEdit) {
-              if (!isAdmin) return alert("You're not an admin.");
-              if (!image) return alert('Image not found.');
+            //   if (!isAdmin) return alert("You're not an admin.");
+            //   if (!image) return alert('Image not found.');
               setLoadingTwo(true)
               await axios.put(
                   `/api/products/${product.id}`,
-                  {...product, image: image},
+                  {...product, image, price: Number(product.price), description: product.description.charAt(0).toUpperCase() + product.description.slice(1)},
                   {
                       headers: { Authorization: token },
                   },
@@ -112,12 +112,12 @@ function CreateProduct() {
               setCallback(!callback);
               history.push('/');
           } else {
-              if (!isAdmin) return alert("You're not an admin.");
-              if (!image) return alert('Image not found.');
+            //   if (!isAdmin) return alert("You're not an admin.");
+            //   if (!image) return alert('Image not found.');
               setLoadingTwo(true)
               await axios.post(
                   '/api/products',
-                  {...product,image: image},
+                  {...product, image, price: Number(product.price), description: product.description.charAt(0).toUpperCase() + product.description.slice(1)},
                   {
                       headers: { Authorization: token },
                   },
@@ -163,7 +163,7 @@ function CreateProduct() {
   const onHandleUpload = async (e) => {
       e.preventDefault();
       try {
-          if (!isAdmin) return alert("You're not an admin.");
+        //   if (!isAdmin) return alert("You're not an admin.");
           const file = e.target.files[0];
           if (!file) {
             //   return alert('Image not found.');
@@ -242,7 +242,7 @@ function CreateProduct() {
   };
   const handleDestroyImage = async () => {
       try {
-          if (!isAdmin) return alert("You're not an admin.");
+        //   if (!isAdmin) return alert("You're not an admin.");
           setLoading(true);
           await axios.post(
               '/api/destroy',
@@ -514,7 +514,7 @@ function CreateProduct() {
                           type="text"
                           className="form-control"
                           onChange={onHandleChange}
-                          value={product.description}
+                          value={product.description.charAt(0).toUpperCase() + product.description.slice(1)}
                           id="hobby"
                           name="description"
                           required

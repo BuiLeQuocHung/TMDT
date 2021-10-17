@@ -22,4 +22,6 @@ router.get('/refresh_token', usersController.refreshToken);
 router.get('/history', auth, usersController.history);
  
 router.patch('/edit', auth, usersController.updateUser);
+
+router.post('/forgotpassword', usersController.forgotPassword);
 module.exports = router;

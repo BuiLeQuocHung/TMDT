@@ -81,7 +81,9 @@ export default function Login() {
   };
   return (
       <div className="login register">
-          <div>
+          <div 
+
+          >
           <ToastContainer
             position="top-right"
             autoClose={2000}
@@ -171,7 +173,9 @@ export default function Login() {
               <p style={{
                   opacity: 0.5,
                   textDecoration: 'underline'
-              }}>Quên mật khẩu?</p>
+              }}>
+                  <Link to="/forgotpassword" style={{color: '#f37435c4'}}>Quên mật khẩu?</Link>
+              </p>
               <div className="login-group">
                   <Button
                       variant="contained"

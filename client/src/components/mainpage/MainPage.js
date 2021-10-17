@@ -11,6 +11,7 @@ import DetailHistory from './history/DetailHistory';
 import Categories from './categories/Categories';
 import CreateProduct from './createProduct/CreateProduct';
 import MyAccount from './myAccount/MyAccount';
+import  ForgotPassword from './auth/forgotpassword/ForgotPassword';
 
 import { GlobleState } from '../../GlobleState';
 
@@ -63,6 +64,11 @@ export default function MainPage() {
                 <Route
                     path="/myAccount"
                     component={isAdmin ? MyAccount : MyAccount}
+                    exact
+                ></Route>
+                <Route
+                    path="/forgotpassword"
+                    component={ForgotPassword}
                     exact
                 ></Route>
                 

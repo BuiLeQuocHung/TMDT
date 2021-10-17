@@ -175,7 +175,7 @@ return (
                                 </div>
                             </div>
                         </div>
-                        <p className="modal-text">{product.description}</p>
+                        <p className="modal-text">{product.description.charAt(0).toUpperCase() + product.description.slice(1)}</p>
                         {isAdmin ? (
                             <div
                                 className="product_admin-btn"

@@ -23,26 +23,26 @@ function Footer() {
                         </ul>
                     </div>
                     <div className="col col-sm-12 col-md-6 col-lg-3 footer-archive">
-                        <h3 className="footer-hd">Delivery</h3>
+                        <h3 className="footer-hd">Trợ giúp</h3>
                         <ul>
                             <li className="footer-hve">
-                                <p>Designer Shoes</p>
+                                <p>Chính sách bảo mật</p>
                             </li>
                             <li className="footer-hve">
-                                <p>Gallery</p>
+                                <p>Chính sách đổi trả</p>
                             </li>
                             <li className="footer-hve">
-                                <p>Pricing</p>
+                                <p>Chính sách vận chuyển</p>
                             </li>
                             <li className="footer-hve">
-                                <p>Feature Index</p>
+                                <p>Điều khoản sử dụng</p>
                             </li>
-                            <li className="footer-hve">
+                            {/* <li className="footer-hve">
                                 <p>Login</p>
                             </li>
                             <li className="footer-hve">
                                 <p>Help & Support</p>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                     <div className="col col-sm-12 col-md-6 col-lg-3">

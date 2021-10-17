@@ -28,7 +28,7 @@ export default function Products() {
   }, [setCategory]);
   const deleteProduct = async (id, image_id) => {
       try {
-          if (!isAdmin) return alert("You're not admin.");
+        //   if (!isAdmin) return alert("You're not admin.");
           setLoading(true);
        //    await axios.post(
        //        '/api/destroy',
@@ -97,7 +97,8 @@ export default function Products() {
       return (
           <React.Fragment>
               <div className="container" style={styleProducts}>
-                <div>
+              <div 
+                >
                 <ToastContainer
                     position="top-right"
                     autoClose={2000}

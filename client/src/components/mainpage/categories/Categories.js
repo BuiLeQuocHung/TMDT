@@ -83,7 +83,7 @@ function Categories() {
            );
            await makeTimer()
         //    alert(`update ${categoryupdate} successfully`);
-           toast.success(`update ${categoryupdate} successfully`, {
+           toast.success(`Cập nhật danh mục ${categoryupdate} thành công`, {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -124,7 +124,7 @@ function Categories() {
                });
                console.log("detele:",callback);
                setCallback(!callback);
-               toast.success(`delete ${name} successfully`, {
+               toast.success(`Xóa danh mục ${name} thành công`, {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -152,7 +152,9 @@ function Categories() {
  
    return (
        <div className="categories">
-           <div>
+           <div 
+
+          >
             <ToastContainer
                 position="top-right"
                 autoClose={2000}

@@ -93,15 +93,9 @@ module.exports = {
    },
  
    forgotPassword: async (email) => {
-       try {
            const auth = firebaseAuth.getAuth();
            await firebaseAuth.sendPasswordResetEmail(auth, email)
-           console.log("Password reset email sent!");
-       } catch(error)  {
-           const errorCode = error.code;
-           const errorMessage = error.message;
-           console.log(errorCode, errorMessage);
-       }
+
    },   
   
   getById: async (url, id) => {

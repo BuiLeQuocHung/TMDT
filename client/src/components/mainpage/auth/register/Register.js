@@ -88,7 +88,9 @@ export default function Register() {
   };
   return (
       <div className="login register">
-          <div>
+          <div 
+
+          >
           <ToastContainer
             position="top-right"
             autoClose={5000}
@@ -235,7 +237,7 @@ export default function Register() {
                           'Đăng ký tài khoản Boardgame'
                       )}
                   </Button>
-                  <p className="register">Đã có tài khoản BGCity? <Link to="/login" style={{color: '#f37435c4'}}>Đăng nhập</Link></p>    
+                  {/* <p className="register">Đã có tài khoản BGCity? <Link to="/login" style={{color: '#f37435c4'}}>Đăng nhập</Link></p>     */}
               </div>
           </form>
           </div>

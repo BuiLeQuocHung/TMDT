@@ -124,14 +124,14 @@ return (
            <div className="row">
            {products.length > 0 && Object.keys(detailProduct).length !== 0 && Object.values(products).map((product, index) => {
                   if (product.category.toLowerCase() == detailProduct.category.toLowerCase()) {
-                      if (index <= 7) {
+                    //   if (index <= 7) {
                           return (
                               <ProductItem
                                   product={product}
                                   key={index}
                               />
                           );
-                      }
+                    //   }
                   }
                   return null;
               })}

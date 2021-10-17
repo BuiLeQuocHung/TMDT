@@ -108,7 +108,9 @@ export default function Cart() {
  
   return (
       <div className="cart" style={{marginLeft: '50px', marginBottom: '10rem'}}>
-          <div>
+          <div 
+
+          >
           <ToastContainer
             position="top-right"
             autoClose={2000}

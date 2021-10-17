@@ -212,6 +212,18 @@ class usersController {
           return res.status(500).json({ msg: err.message });
       }
   }
+
+  async forgotPassword(req, res, next) {
+    try {
+    //  console.log("==========newPassword=====", req.body)
+     await utils.forgotPassword(req.body.email)
+     res.json({ msg: 'Update password user successfully' });
+    } catch (err) {
+        
+        return res.status(500).json({ msg: err.message });
+    }
+}
+
 }
 function createAccessToken(user) {
   return jwt.sign(user, Key, { expiresIn: '1d' });
