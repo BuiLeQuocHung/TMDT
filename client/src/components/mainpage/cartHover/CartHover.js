@@ -49,8 +49,8 @@ function CartHover() {
                        <li key={index} className="cart-notify-item">
                            <Link to={`/detail/${product.id}`}>
                                <img
-                                   // src={product.url}
-                                   src="https://bgvnpicture.s3-ap-southeast-1.amazonaws.com/old/stories/images/uno-mattel-4.jpg"
+                                   src={product.image.url}
+                                //    src="https://bgvnpicture.s3-ap-southeast-1.amazonaws.com/old/stories/images/uno-mattel-4.jpg"
                                    alt="product-img"
                                    className="cart-notify-img"
                                ></img>
@@ -84,11 +84,11 @@ function CartHover() {
                })}
            </ul>
            <div className="cart-notify-total">
-               <div className="cart-notify-total-l">Total:</div>
+               <div className="cart-notify-total-l">Tổng tiền:</div>
                <div className="cart-notify-total-n">${totalCart()}</div>
            </div>
            <Link to="/cart" className="cart-notify-btn view-cart-btn">
-               View Cart
+               Xem giỏ hàng
            </Link>
            {/* <button className="cart-notify-btn payment-cart-btn">
                Payment

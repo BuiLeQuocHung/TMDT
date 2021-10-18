@@ -71,7 +71,8 @@ function OrderHistory() {
                               {renderHeading(isAdmin)}
                           </thead>
                           <tbody>
-                              {history.map((payment, index) => {
+                              {history.sort((a, b) =>  (Number(a.created_at) > Number(b.created_at)) ? 1: -1 ).map((payment, index) => {
+                                //   console.log(history)
                                   return (
                                       <tr key={index}>
                                           {isAdmin ? <td>{payment.name}</td> : ''}

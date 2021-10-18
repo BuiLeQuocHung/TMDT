@@ -161,12 +161,12 @@ export default function Cart() {
                                                           to={`/detail/${product.id}`}
                                                       >
                                                           <img
-                                                              // src={
-                                                              //     product
-                                                              //         .images
-                                                              //         .url
-                                                              // }
-                                                              src="https://bgvnpicture.s3-ap-southeast-1.amazonaws.com/old/stories/images/uno-mattel-4.jpg"
+                                                              src={
+                                                                  product
+                                                                      .image
+                                                                      .url
+                                                              }
+                                                            //   src="https://bgvnpicture.s3-ap-southeast-1.amazonaws.com/old/stories/images/uno-mattel-4.jpg"
                                                               alt="product-img"
                                                           ></img>
                                                       </Link>
@@ -177,8 +177,8 @@ export default function Cart() {
                                                           <a
                                                               href={`/detail/${product.id}`}
                                                           >
-                                                              {/* {product.name} */}
-                                                              bài uno
+                                                              {product.name}
+                                                              {/* bài uno */}
                                                           </a>
                                                       </div>
                                                       <div class="button">
@@ -235,7 +235,7 @@ export default function Cart() {
                                       <span style={{fontWeight: '500', fontSize: '0.9rem'}}>Giao tới</span>
                                       <Link to="/myAccount" style={{color: 'blue', fontSize: '0.9rem'}}>Thay đổi</Link>
                                   </div>
-                                  <p style ={{fontWeight: '500', fontSize: '1.1rem', marginBottom: '0.5rem'}}>Nguyễn Hữu Hưng | 0905683258</p>
+                                  {/* <p style ={{fontWeight: '500', fontSize: '1.1rem', marginBottom: '0.5rem'}}>Nguyễn Hữu Hưng | 0905683258</p> */}
                                   <p style ={{fontWeight: '500', fontSize: '1.1rem', marginBottom: '0.5rem'}}>{`${user.name} | ${user.phone}`}</p>
                                   {/* <p>57 Đường số 2 - Cư xá Bình Thới, Phường 8, Quận 11, Thành phố Hồ Chí Minh, Phường 08, Quận 11, Hồ Chí Minh</p> */}
                                   <p>{user.address}</p>
@@ -246,7 +246,7 @@ export default function Cart() {
                                           Tổng cộng
                                       </div>
                                       <div className="cart-subtotal-number">
-                                          {`${total} đ`}
+                                          {`${total} USD`}
                                       </div>
                                   </div>
                                   {/* <div className="cart-shipping">

@@ -78,7 +78,7 @@ function DetailHistory() {
                                    <tr key={index}>
                                        <td style={{ textAlign: 'center' }}>
                                            <img
-                                               src={product.image === '' ? 'https://bgvnpicture.s3-ap-southeast-1.amazonaws.com/old/stories/images/uno-mattel-4.jpg': product.image}
+                                               src={product.image.url === '' ? 'https://bgvnpicture.s3-ap-southeast-1.amazonaws.com/old/stories/images/uno-mattel-4.jpg': product.image.url}
                                                alt="history_image"
                                                className="detail-history-cart-img"
                                            ></img>
