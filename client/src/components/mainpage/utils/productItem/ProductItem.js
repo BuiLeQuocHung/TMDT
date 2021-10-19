@@ -134,7 +134,7 @@ return (
                                 </Link>
                             {/* <h5 ></h5> */}
                             <p className="modal-price">
-                                139.000đ
+                                ${product.price}
                             </p>
                         </div>
                         <div className="modal-list">
